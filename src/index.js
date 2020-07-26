@@ -1,12 +1,54 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import _ from 'underscore-node'
 
 function Square(props) {
     return (
         <button className="square" onClick={props.onClick}>
             {props.value}
         </button>
+    );
+}
+
+function HistoryStep(props) {
+    return (
+        <td key={props.moveNumber}>
+            <div>
+                <button onClick={props.onClick}>{props.desc}</button>
+                <Board
+                    squares={props.squares}
+                    onClick={() => {}}
+                />
+            </div>
+        </td>
+    );
+}
+
+function HistoryStepRow(props) {
+
+    const steps = props.movesRow.map((move, moveNumber) => {
+
+        const gameMoveNumber = moveNumber + (3 * props.rowIndex)
+        const desc = gameMoveNumber
+            ? "Go to Game move #" + (gameMoveNumber)
+            : "Go to Game Start"
+
+        return (
+            <HistoryStep
+                moveNumber={gameMoveNumber}
+                desc={desc}
+                onClick={() => props.onClick(gameMoveNumber)}
+                squares={props.history[gameMoveNumber].squares}
+            />
+        )
+
+    });
+
+    return (
+        <tr>
+            {steps}
+        </tr>
     );
 }
 
@@ -88,25 +130,39 @@ class Game extends React.Component {
         });
     }
 
+    renderHistoryStepRow(history, movesRows, rowIndex) {
+
+        if(!movesRows[rowIndex]) {
+            return <tr/>
+        }
+
+        return (
+            <HistoryStepRow
+                movesRow = {movesRows[rowIndex]}
+                rowIndex = {rowIndex}
+                onClick={(moveNumber) => this.jumpTo(moveNumber)}
+                history={history}
+            />
+        );
+    }
+
     render() {
 
-        const history = this.state.history;
+        const history = this.state.history.slice();
         const current = history[this.state.moveNumber];
         const winner = calculateWinner(current.squares);
 
-        const moves = history.map((move, moveNumber) => {
+        const movesRows = _.groupBy(history, function (step, stepIndex) {
+            return Math.floor(stepIndex / 3)
+        })
 
-            const desc = moveNumber
-                ? "Go to Game move #" + (moveNumber)
-                : "Go to Game Start"
-
-            return (
-                <li key={moveNumber}>
-                    <button onClick={() => this.jumpTo(moveNumber)}>{desc}</button>
-                </li>
-            )
-
-        });
+        const moves =
+            <tbody>
+                {this.renderHistoryStepRow(history, movesRows, 0)}
+                {this.renderHistoryStepRow(history, movesRows, 1)}
+                {this.renderHistoryStepRow(history, movesRows, 2)}
+                {this.renderHistoryStepRow(history, movesRows, 3)}
+            </tbody>
 
         let status;
         if (winner) {
@@ -125,7 +181,7 @@ class Game extends React.Component {
                 </div>
                 <div className="game-info">
                     <div>{status}</div>
-                    <ol>{moves}</ol>
+                    <table>{moves}</table>
                 </div>
             </div>
         );

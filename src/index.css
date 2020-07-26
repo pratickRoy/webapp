@@ -7,6 +7,10 @@ ol, ul {
     padding-left: 30px;
 }
 
+.board-row {
+    border-spacing: 0;
+}
+
 .board-row:after {
     clear: both;
     content: "";
