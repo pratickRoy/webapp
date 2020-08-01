@@ -1,0 +1,199 @@
+// Color Palette
+
+$black: #000000;
+$white: #ffffff;
+$very-dark-gray: #2c2c2c;
+$very-very-dark-gray: #1a1a1a;
+$light-violet: #7C4DFF;
+$moderate-green: #8BC34A;
+
+$game-board-background-color: $very-dark-gray;
+$background-color: $very-very-dark-gray;
+$player-1-color: $light-violet;
+$player-2-color: $moderate-green;
+
+$accent-color:         #009688;
+
+// functions
+
+@function multiply-dimension($dimension, $multiplier) {
+  @return $dimension * $multiplier;
+}
+
+@function add-dimension($dimension1, $dimension2) {
+  @return $dimension1 + $dimension2;
+}
+
+// Constants
+
+$small-to-large-square-enlargement-factor: 2;
+$square-row-count: 3;
+
+$game-board-padding: 1px;
+$game-board-border-side: 2;
+$game-board-border-dimension: 4px;
+
+$small-game-board-min-padding: 10px;
+$large-game-board-min-padding: multiply-dimension($small-game-board-min-padding, $small-to-large-square-enlargement-factor);
+
+$small-square-dimension: 34px;
+$large-square-dimension: multiply-dimension($small-square-dimension, $small-to-large-square-enlargement-factor);
+
+body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 20px;
+  background: $background-color;
+  color: $white;
+}
+
+ol, ul {
+  padding-left: 30px;
+}
+
+.board-row {
+  border-spacing: 0;
+  height: $large-square-dimension;
+  margin-top: -1px;
+
+  &.small {
+    height: $small-square-dimension;
+  }
+}
+
+.status {
+  margin-bottom: 10px;
+}
+
+.square {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  line-height: $large-square-dimension;
+  height: $large-square-dimension;
+  width: $large-square-dimension;
+  border-radius: 100%;
+  transition: border-radius ease 0.5s;
+
+  &.small {
+    line-height: $small-square-dimension;
+    height: $small-square-dimension;
+    width: $small-square-dimension;
+  }
+
+  &.player-1 {
+    border-radius: 0;
+  }
+
+  &.player-2 {
+    border-radius: 0;
+  }
+
+  &.game-over {
+    border-radius: 0;
+  }
+}
+
+.square:focus {
+  outline: none;
+}
+
+.kbd-navigation .square:focus {
+  background: #ddd;
+}
+
+.game-board {
+
+  display: flex;
+  flex-direction: column;
+  border: $game-board-border-dimension solid transparent;
+  box-shadow: 0 0 0 1px #3c3c3c, 0 0 0 2px#000;
+  align-items: center;
+  background: $game-board-background-color;
+
+  &.small {
+
+    padding: $small-game-board-min-padding 0 $small-game-board-min-padding 0;
+    min-height: add-dimension(multiply-dimension($small-square-dimension, $square-row-count), $small-game-board-min-padding);
+    min-width: add-dimension(multiply-dimension($small-square-dimension, $square-row-count), $small-game-board-min-padding);
+  }
+
+  &.large {
+
+    width: 100%;
+    padding: $large-game-board-min-padding 0 $large-game-board-min-padding 0;
+    min-height: add-dimension(multiply-dimension($large-square-dimension, $square-row-count), $large-game-board-min-padding);
+    min-width: add-dimension(multiply-dimension($large-square-dimension, $square-row-count), $large-game-board-min-padding);
+  }
+}
+
+.player-1 {
+  background: $player-1-color !important;
+}
+
+.player-2 {
+  background: $player-2-color !important;
+}
+
+.game-status {
+  width: multiply-dimension($large-square-dimension, $square-row-count);
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 2px;
+  margin-bottom: 20px;
+  color: $black;
+  background: $white;
+}
+
+#time-travel-label {
+  width: multiply-dimension($large-square-dimension, $square-row-count);
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 2px;
+  margin-bottom: 20px;
+  color: $white;
+  background: $accent-color;
+}
+
+.time-travel-tab {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: $game-board-border-dimension solid transparent;
+  box-shadow: 0 0 0 1px #3c3c3c, 0 0 0 2px#000;
+  padding: $large-game-board-min-padding 0 $large-game-board-min-padding 0;
+  width: 100%;
+  align-items: center;
+  background: $game-board-background-color;
+  min-height: add-dimension(multiply-dimension($large-square-dimension, $square-row-count), $large-game-board-min-padding);
+  min-width: add-dimension(multiply-dimension($large-square-dimension, $square-row-count), $large-game-board-min-padding);
+}
+
+.time-travel-steps {
+  border-spacing: add-dimension(multiply-dimension($game-board-border-dimension, $game-board-border-side), $game-board-padding) $game-board-padding;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  row-gap: 3px;
+  column-gap: 3px;
+}
+
+.time-travel-step-btn {
+  width: multiply-dimension($small-square-dimension, $square-row-count);
+  text-align: center;
+  padding-top: 5px;
+  margin-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 2px;
+  color: $white;
+  border-color: aquamarine;
+  background: $accent-color;
+}
