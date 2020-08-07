@@ -2,6 +2,7 @@
 
 $black: #000000;
 $white: #ffffff;
+$half-opaque-white: rgba(255,255,255,0.50);
 $very-dark-gray: #2c2c2c;
 $very-very-dark-gray: #1a1a1a;
 $light-violet: #7C4DFF;
@@ -48,6 +49,21 @@ body {
 
 ol, ul {
   padding-left: 30px;
+}
+
+.ttt-hidden {
+  display: none;
+}
+
+.ttt-button {
+  text-align: center;
+  padding-top: 5px;
+  margin-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 2px;
+  color: $white;
+  border-color: aquamarine;
+  background: $accent-color;
 }
 
 .board-row {
@@ -140,7 +156,7 @@ ol, ul {
   background: $player-2-color !important;
 }
 
-.game-status {
+.ttt-label {
   width: multiply-dimension($large-square-dimension, $square-row-count);
   text-align: center;
   padding-top: 5px;
@@ -151,14 +167,45 @@ ol, ul {
   background: $white;
 }
 
-#time-travel-label {
+.game-status {
+  @extend .ttt-label;
+}
+
+.game-score {
+  @extend .ttt-label;
   width: multiply-dimension($large-square-dimension, $square-row-count);
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  margin-bottom: 0;
+  padding: 0;
+  overflow:hidden;
+}
+
+.player-score {
+  flex-grow: 1;
   padding-top: 5px;
   padding-bottom: 5px;
-  border-radius: 2px;
-  margin-bottom: 20px;
-  color: $white;
+}
+
+.play-next-game-button {
+  @extend .ttt-button;
+  margin-top: 20px;
+}
+
+.play-next-game-series-button {
+  @extend .ttt-button;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.finish-game-series-button {
+  @extend .ttt-button;
+  margin-top: 20px;
+}
+
+#time-travel-label {
+  @extend .ttt-label;
   background: $accent-color;
 }
 
@@ -186,14 +233,47 @@ ol, ul {
   column-gap: 3px;
 }
 
-.time-travel-step-btn {
+.time-travel-step-button {
+  @extend .ttt-button;
   width: multiply-dimension($small-square-dimension, $square-row-count);
+}
+
+.ttt-modal {
+  background: $half-opaque-white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+}
+
+.ttt-modal-content {
+  margin: auto;
+  min-width: add-dimension(multiply-dimension($large-square-dimension, $square-row-count), $large-game-board-min-padding);
+  box-shadow: 0 0 1px 1px #3c3c3c, 0 0 2px 2px #000;
   text-align: center;
-  padding-top: 5px;
-  margin-top: 5px;
-  padding-bottom: 5px;
-  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  border: black 1px solid;
+  align-items: center;
+  background: $game-board-background-color;
   color: $white;
-  border-color: aquamarine;
-  background: $accent-color;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.ttt-modal-header {
+  color: black;
+  background-color: $white;
+  padding: 20px;
+  width: 100%;
+
+  &.player-1 {
+    @extend .player-1;
+  }
+
+  &.player-2 {
+    @extend .player-2;
+  }
 }

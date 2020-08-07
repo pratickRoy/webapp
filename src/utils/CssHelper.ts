@@ -6,7 +6,9 @@ export default class CssHelper {
         let cssClassName = "";
         for (let i = 0; i < cssClasses.length; i++) {
 
-            if (typeof cssClasses[i] === "string") {
+            if (cssClasses[i] === undefined) {
+                continue;
+            } else if (typeof cssClasses[i] === "string") {
                 cssClassName += " " + cssClasses[i]
             } else {
                 cssClassName += " " + (cssClasses[i] as Array<String>).join(" ")

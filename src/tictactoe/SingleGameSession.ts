@@ -1,5 +1,6 @@
 import Player from "./commons/Player";
 import {SingleGameMoveData} from "./SingleGameMoveData";
+import {GameSessionPlayerID} from "./GameSession";
 
 export enum SingleGameSessionStatus {
     IN_PROGRESS,
@@ -8,25 +9,23 @@ export enum SingleGameSessionStatus {
 
 export default class SingleGameSession {
 
-    private players = {
-
-        PLAYER_1: new Player("X", "player-1"),
-        PLAYER_2: new Player("O", "player-2")
-    }
-
+    private playerIDToPlayerMap : Map<GameSessionPlayerID, Player>;
     private history: SingleGameMoveData[]
     private moveNumber: number;
     private currentPlayer: Player
 
-    constructor(currentPlayer? : Player) {
+    constructor(players: Map<GameSessionPlayerID, Player>,
+                startingPlayer?: Player) {
 
+        this.playerIDToPlayerMap = players;
+        this.moveNumber = 0;
+        this.currentPlayer = startingPlayer ?? this.getDefaultStartingPlayer()
         this.history = [new SingleGameMoveData(
             Array(9).fill(null),
+            this.currentPlayer,
             undefined,
             SingleGameSessionStatus.IN_PROGRESS
         )];
-        this.moveNumber = 0;
-        this.currentPlayer = currentPlayer ?? this.getStartingPlayer()
     }
 
     getCurrentPlayer() : Player {
@@ -61,42 +60,35 @@ export default class SingleGameSession {
             : SingleGameSessionStatus.IN_PROGRESS
 
         // Update State
+        this.currentPlayer = this.getNextPlayer(this.currentPlayer);
         this.history = history.concat([new SingleGameMoveData(
             squares,
+            this.currentPlayer,
             winner,
             status
         )]);
         this.moveNumber = history.length;
-        this.currentPlayer = this.getNextPlayer(this.currentPlayer);
     }
 
     timeTravelTo(moveNumber: number) {
 
         // Update State
         this.moveNumber = moveNumber;
-        this.currentPlayer = this.getPlayerByMove(moveNumber + 1)
+        this.currentPlayer = this.history[moveNumber].movePlayer
     }
 
-    private getStartingPlayer() : Player {
-        return this.players.PLAYER_1;
+    private getDefaultStartingPlayer() : Player {
+        return this.playerIDToPlayerMap.values().next().value;
     }
 
     private getNextPlayer(currentPlayer : Player) : Player {
 
-        if (currentPlayer === this.players.PLAYER_1) {
-            return this.players.PLAYER_2;
-        } else if (currentPlayer === this.players.PLAYER_2) {
-            return this.players.PLAYER_1;
+        if (currentPlayer === this.playerIDToPlayerMap.get(GameSessionPlayerID.PLAYER_1)) {
+            return this.playerIDToPlayerMap.get(GameSessionPlayerID.PLAYER_2)!;
+        } else if (currentPlayer === this.playerIDToPlayerMap.get(GameSessionPlayerID.PLAYER_2)) {
+            return this.playerIDToPlayerMap.get(GameSessionPlayerID.PLAYER_1)!;
         }
         throw "Illegal Argument";
-    }
-
-    private getPlayerByMove(moveNumber : number) : Player {
-
-        if (moveNumber % 2 === 0) {
-            return this.players.PLAYER_2;
-        }
-        return this.players.PLAYER_1;
     }
 
     private static isSquareAlreadyCaptured(squareId: number, squares: (Player | undefined)[]) : boolean {

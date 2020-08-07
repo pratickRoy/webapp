@@ -35,7 +35,7 @@ export default class TimeTravelStep extends React.Component<TimeTravelStepProps,
     ]);
 
     // Time Travel Step Button
-    private static defaultTimeTravelStepButtonCssClasses: string[] = ["time-travel-step-btn"]
+    private static defaultTimeTravelStepButtonCssClasses: string[] = ["time-travel-step-button"]
 
     render() {
 

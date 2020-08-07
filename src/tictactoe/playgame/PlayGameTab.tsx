@@ -5,11 +5,18 @@ import Board, {BoardStyle} from "../commons/Board";
 import {SingleGameMoveData} from "../SingleGameMoveData";
 import {SingleGameSessionStatus} from "../SingleGameSession";
 import Player from "../commons/Player";
+import PlayGameScore from "./PlayGameScore";
+import PlayNextGame, {PlayNextGameStyle} from "./PlayNextGame";
+import FinishGameSeries, {FinishGameSeriesStyle} from "./FinishGameSeries";
 
 interface PlayGameTabProps {
     singleGameMoveData: SingleGameMoveData;
-    currentPlayer: Player
+    currentPlayer: Player;
+    playerToPlayerScoreMap: Map<Player, number>;
+    isLastGameInSeries: boolean;
     onGameBoardSquareClick(squareId: number) : void
+    onNextGameClick() : void
+    onFinishGameSeriesClick() : void
 }
 
 interface PlayGameTabState {
@@ -40,6 +47,27 @@ export default class PlayGameTab extends React.Component<PlayGameTabProps, PlayG
                         squares={this.props.singleGameMoveData.squares}
                         onBoardSquareClick={(squareId) => this.props.onGameBoardSquareClick(squareId)}
                     />
+                    <PlayGameScore
+                        playerToPlayerScoreMap={this.props.playerToPlayerScoreMap}
+                    />
+                    <PlayNextGame
+                        playNextGameStyleList={
+                            !this.props.isLastGameInSeries &&
+                                this.props.singleGameMoveData.status === SingleGameSessionStatus.COMPLETED
+                                    ? []
+                                    : [PlayNextGameStyle.TTT_HIDDEN]
+                        }
+                        onNextGameClick={() => this.props.onNextGameClick()}>
+                    </PlayNextGame>
+                    <FinishGameSeries
+                        finishGameSeriesStyleList={
+                            this.props.isLastGameInSeries &&
+                                this.props.singleGameMoveData.status === SingleGameSessionStatus.COMPLETED
+                                    ? []
+                                    : [FinishGameSeriesStyle.TTT_HIDDEN]
+                        }
+                        onFinishGameSeriesClick={() => this.props.onFinishGameSeriesClick()}>
+                    </FinishGameSeries>
                 </div>
             </div>
         )
