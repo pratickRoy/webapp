@@ -3,6 +3,7 @@
 $black: #000000;
 $white: #ffffff;
 $half-opaque-white: rgba(255,255,255,0.50);
+$dark-gray: #767676;
 $very-dark-gray: #2c2c2c;
 $very-very-dark-gray: #1a1a1a;
 $light-violet: #7C4DFF;
@@ -240,12 +241,14 @@ ol, ul {
 
 .ttt-modal {
   background: $half-opaque-white;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   display: flex;
+  overflow-y: auto;
+  height: 100%;
 }
 
 .ttt-modal-content {
@@ -260,7 +263,6 @@ ol, ul {
   background: $game-board-background-color;
   color: $white;
   overflow: hidden;
-  z-index: 1;
 }
 
 .ttt-modal-header {
@@ -275,5 +277,48 @@ ol, ul {
 
   &.player-2 {
     @extend .player-2;
+  }
+}
+
+.ttt-game-setup-modal-header {
+  @extend .ttt-modal-header;
+  background: $accent-color;
+  color: $white;
+}
+
+.ttt-form {
+
+  label {
+
+  }
+
+  input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+    text-align: center;
+    word-wrap: break-word;
+    word-break: break-all;
+
+    &[type=readonly] {
+      color: $dark-gray;
+      border-color: $dark-gray;
+    }
+  }
+
+  .form-box {
+    padding: 20px 20px 0 20px;
+  }
+
+  .submit-button {
+    @extend .ttt-button;
+    background: $accent-color;
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
 }

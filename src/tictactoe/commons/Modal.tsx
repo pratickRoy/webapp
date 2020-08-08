@@ -5,7 +5,6 @@ import {createPortal} from "react-dom";
 interface ModalProps {
     modalRootId? : string
     modalStyleClasses? : string[]
-    show?: boolean;
 }
 
 interface ModalState {

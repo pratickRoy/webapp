@@ -16,6 +16,7 @@ export default class GameSession {
 
     private currentSingleGameSessionId: number
     private currentSingleGameSession: SingleGameSession
+    private _isGameSessionSetup: boolean
     private _isLastGameInSession: boolean
     private _isGameSessionCompleted: boolean
 
@@ -27,9 +28,6 @@ export default class GameSession {
         ]);
         this.singleGameSessionList = [
             new SingleGameSession(this.playerIDToPlayerMap, this.playerIDToPlayerMap.get(GameSessionPlayerID.PLAYER_1)),
-            new SingleGameSession(this.playerIDToPlayerMap, this.playerIDToPlayerMap.get(GameSessionPlayerID.PLAYER_2)),
-            new SingleGameSession(this.playerIDToPlayerMap, this.playerIDToPlayerMap.get(GameSessionPlayerID.PLAYER_1)),
-            new SingleGameSession(this.playerIDToPlayerMap, this.playerIDToPlayerMap.get(GameSessionPlayerID.PLAYER_2))
         ];
         this.playerIDToPlayerScoreMap = new Map([
             [GameSessionPlayerID.PLAYER_1, 0],
@@ -38,8 +36,33 @@ export default class GameSession {
 
         this.currentSingleGameSessionId = 0;
         this.currentSingleGameSession = this.singleGameSessionList[this.currentSingleGameSessionId];
+        this._isGameSessionSetup = false;
         this._isLastGameInSession = false;
         this._isGameSessionCompleted = false;
+    }
+
+    setupGameSession(numberOfGames : number): void {
+
+        for (let i = 0; i < numberOfGames - 1; i++) {
+            this.singleGameSessionList.push(
+                new SingleGameSession(
+                    this.playerIDToPlayerMap,
+                    this.playerIDToPlayerMap.get(
+                        i % 2 == 0
+                            ? GameSessionPlayerID.PLAYER_2
+                            : GameSessionPlayerID.PLAYER_1
+                    )
+                )
+            )
+        }
+        if (numberOfGames === 1) {
+            this._isLastGameInSession = true;
+        }
+        this._isGameSessionSetup = true;
+    }
+
+    get isGameSessionSetup(): boolean {
+        return this._isGameSessionSetup;
     }
 
     get isLastGameInSession(): boolean {
