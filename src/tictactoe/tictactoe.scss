@@ -44,7 +44,7 @@ $large-square-dimension: multiply-dimension($small-square-dimension, $small-to-l
 body {
   font: 14px "Century Gothic", Futura, sans-serif;
   margin: 20px;
-  background: $background-color;
+  background: $background-color !important;
   color: $white;
 }
 
