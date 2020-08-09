@@ -242,13 +242,12 @@ ol, ul {
 .ttt-modal {
   background: $half-opaque-white;
   position: fixed;
-  top: 0;
+  top: 56px;
   left: 0;
   right: 0;
   bottom: 0;
   display: flex;
   overflow-y: auto;
-  height: 100%;
 }
 
 .ttt-modal-content {
@@ -263,6 +262,7 @@ ol, ul {
   background: $game-board-background-color;
   color: $white;
   overflow: hidden;
+  transform: translateY(5px);
 }
 
 .ttt-modal-header {
@@ -287,10 +287,6 @@ ol, ul {
 }
 
 .ttt-form {
-
-  label {
-
-  }
 
   input {
     width: 100%;

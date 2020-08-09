@@ -9,7 +9,7 @@ import TicTacToeToast, {ToastType} from "./commons/TicTacToeToast";
 import NavBar from "../NavBar";
 
 interface GameProps {
-
+    startGame: boolean
 }
 
 interface GameState {
@@ -32,6 +32,10 @@ export default class Game extends React.Component<GameProps, GameState> {
     }
 
     render() {
+
+        if (!this.props.startGame) {
+            return null;
+        }
 
         return (
             <div id="ttt-game" className="game">

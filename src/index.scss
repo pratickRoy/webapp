@@ -1,5 +1,30 @@
+@import "tictactoe/tictactoe";
+
 .prw-navbar {
   min-width: 224px;
   box-shadow: 0 0 2px 2px rgba(255,255,255,0.5);
-  z-index: 1;
+}
+
+.mvp-intro-header {
+  @extend .ttt-modal-header;
+  color: #fff;
+  background: $accent-color;
+  font-size: 1.5em;
+}
+
+.mvp-intro-content {
+  @extend .ttt-modal-content;
+  margin: auto;
+}
+
+.mvp-intro-desc {
+  color: #fff;
+  background: $accent-color;
+  padding: 10px;
+}
+
+.complete-mvp-intro-button {
+  @extend .ttt-button;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
