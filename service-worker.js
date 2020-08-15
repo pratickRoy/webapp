@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/pratick-roy-website/precache-manifest.180d71e2ad8f77c40eee91f3d2a8fa5b.js"
+  "/pratick-roy-website/precache-manifest.b914e96e8598f0e57a16b9b6fb931f69.js"
 );
 
 self.addEventListener('message', (event) => {

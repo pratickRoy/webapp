@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "50cee541320cb41f2e5eb576923370da",
+    "revision": "00cb67277e763e746d53fe0413cbe45c",
     "url": "/pratick-roy-website/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pratick-roy-website/static/css/2.41fc952c.chunk.css"
   },
   {
-    "revision": "cf7652611cb344828320",
-    "url": "/pratick-roy-website/static/css/main.f17d278a.chunk.css"
+    "revision": "7f2611f0f9b393bc55fd",
+    "url": "/pratick-roy-website/static/css/main.ffc215ac.chunk.css"
   },
   {
     "revision": "f3a06355496eb00e6fd0",
@@ -20,7 +20,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pratick-roy-website/static/js/2.5731d429.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "cf7652611cb344828320",
+    "revision": "7f2611f0f9b393bc55fd",
     "url": "/pratick-roy-website/static/js/main.3f084a12.chunk.js"
   },
   {
