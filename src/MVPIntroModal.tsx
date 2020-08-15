@@ -51,11 +51,11 @@ export default class MVPIntroModal extends React.Component<MVPIntroModalProps, M
                         First of all thank you so much for visiting my website.
                         The website is still under heavy construction, and almost nothing is ready except
                         for a tic tac toe game (long story!). So while construction finishes, play a round!
-                        <br/>
-                        If you want to know the long story, play the video.
+                        If you want to know the long story, play the video. (Fair Warning - It could be boring.)
+                        If it's boring, skip over to the game!
                     </div>
                     <ReactPlayer
-                        url='https://www.youtube.com/watch?v=ysz5S6PUM-U'
+                        url='https://youtu.be/T44vtrva414'
                         controls={true}
                         width={this.state.playerWidth}
                         height={this.state.playerHeight}
