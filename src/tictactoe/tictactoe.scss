@@ -42,8 +42,6 @@ $small-square-dimension: 34px;
 $large-square-dimension: multiply-dimension($small-square-dimension, $small-to-large-square-enlargement-factor);
 
 body {
-  font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 20px;
   background: $background-color !important;
   color: $white;
 }
