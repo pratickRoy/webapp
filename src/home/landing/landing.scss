@@ -1,0 +1,115 @@
+.fade-in-animate {
+    animation: fadeInAnimation ease 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    animation-delay: 3s
+}
+
+.fade-in-animate-with-delay {
+    @extend .fade-in-animate;
+    animation-delay: 5s;
+}
+
+#prw-landing-fragment {
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: black;
+
+    .prw-landing-fragment-top-direction {
+        @extend .fade-in-animate-with-delay;
+        z-index: 100;
+    }
+
+    #prw-landing-fragment-background {
+        @extend .fade-in-animate-with-delay;
+        z-index: 1;
+        position: absolute;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        background: url("https://drive.google.com/uc?export=view&id=1bjKOOl2sm43tjC3oT-aejg8zbOgi4btg") no-repeat;
+        background-size: 100% 100%;
+    }
+
+    #prw-landing-fragment-background-overlay {
+        @extend .fade-in-animate;
+        z-index: 2;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .75);
+        background-image: radial-gradient(white, rgba(255, 255, 255, .2) 2px, transparent 40px),
+        radial-gradient(white, rgba(255, 255, 255, .15) 1px, transparent 30px),
+        radial-gradient(white, rgba(255, 255, 255, .1) 2px, transparent 40px),
+        radial-gradient(rgba(255, 255, 255, .4), rgba(255, 255, 255, .1) 2px, transparent 30px);
+        background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+        background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+    }
+
+    #prw-landing-fragment-content {
+        z-index: 100;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+
+        #prw-landing-fragment-content-display-image {
+            @extend .fade-in-animate-with-delay;
+            z-index: 100;
+            width: 150px;
+            border-radius: 50%;
+            background-color: black;
+        }
+
+        .prw-landing-fragment-content-display-image-pulse {
+            z-index: 3;
+            position: absolute;
+            background-color: yellow;
+            box-shadow: 0 0 60px 30px #fbe602, 0 0 100px 60px #e70f14, 0 0 140px 90px #fabc14;
+            opacity: 0;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            animation-iteration-count: 1;
+            animation: scaleIn cubic-bezier(1, 0, 1, 1);
+
+            &:nth-child(2) { animation-delay: 0s; animation-duration: 4s;}
+            &:nth-child(3) { animation-delay: 1s; animation-duration: 3s; }
+            &:nth-child(4) { animation-delay: 2s; animation-duration: 2s; }
+        }
+
+        #prw-landing-fragment-content-body {
+            margin-top: 10px;
+            text-align: center;
+            @extend .fade-in-animate;
+            @extend .fade-in-animate-with-delay;
+        }
+    }
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0, 0);
+        opacity: 1;
+    }
+    to {
+        transform: scale(10, 10);
+        opacity: .05;
+    }
+}

@@ -1,0 +1,11 @@
+.prw-horizontal-color-band-divider {
+
+    width: 100%;
+    height: 10px;
+    display: flex;
+
+    div {
+        width: 100%;
+        flex-grow: 1;
+    }
+}

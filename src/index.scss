@@ -1,4 +1,10 @@
 @import "tictactoe/tictactoe";
+@import "components/components";
+@import "home/home";
+
+html, body, #root {
+  height: 100%;
+}
 
 .prw-navbar {
   min-width: 224px;
