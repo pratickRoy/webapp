@@ -1,9 +1,10 @@
+@import "commons";
 @import "tictactoe/tictactoe";
 @import "components/components";
 @import "home/home";
 
 html, body, #root {
-  height: 100%;
+  @extend .prw-full-height;
 }
 
 .prw-navbar {
@@ -35,3 +36,5 @@ html, body, #root {
   margin-top: 15px;
   margin-bottom: 15px;
 }
+
+@import "typography";

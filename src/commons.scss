@@ -1,0 +1,43 @@
+@import "breakpoints";
+
+.prw-full-height {
+    height: 100vh;
+}
+
+.prw-hidden {
+    display: none !important;
+}
+
+.prw-animated-text-visible {
+    font-size: 1em;
+    transition: font-size 0.5s, overflow 0.5s 0.5s;
+}
+
+.prw-animated-text-hidden {
+    transition: font-size 0.5s, overflow 0s;
+    font-size: 0;
+}
+
+.prw-btn {
+    --button-small-width: 44px;
+    --button-default-height: 49px;
+    --button-default-font-size: 14px;
+    --button-default-border-radius: 2px;
+    --button-horizontal-padding: 21px;
+    --button-raise-level: 4px;
+    --button-hover-pressure: 2;
+    --transform-speed: 0.4s;
+    --button-primary-color: #ffffff;
+    --button-primary-color-dark: #7a7a7a;
+    --button-primary-color-light: #000000;
+    --button-primary-color-hover: #dfe8fb;
+    --button-primary-border: none;
+
+    @include xxs {
+        --button-small-width: 60px;
+    }
+
+    @include xs {
+        --button-small-width: 90px;
+    }
+}
