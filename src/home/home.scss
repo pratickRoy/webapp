@@ -40,7 +40,17 @@
 
     .aws-btn {
       margin-right: 1%;
-      @extend .prw-btn
+      @extend .prw-btn;
+
+      .prw-navbar-navigation-button-text {
+        @extend .prw-animated-text-hidden;
+      }
+
+      :hover {
+        .prw-navbar-navigation-button-text {
+          @extend .prw-animated-text-visible;
+        }
+      }
     }
   }
 
@@ -56,19 +66,21 @@
 
     div {
       .aws-btn {
-        margin: 0.2rem;
-        --button-default-height: 48px;
-        --button-default-font-size: 14px;
-        --button-default-border-radius: 1px;
-        --button-horizontal-padding: 21px;
-        --button-raise-level: 1px;
-        --button-hover-pressure: 1;
-        --transform-speed: 0.185s;
-        --button-primary-color: #000000;
-        --button-primary-color-dark: #ffffff;
-        --button-primary-color-light: #d4d9e4;
-        --button-primary-color-hover: #000000;
-        --button-primary-border: 1px solid #ffffff;
+        transition: all ease-in-out 0.2s;
+        @extend .prw-btn-dark;
+
+        --button-small-width: 98%;
+        margin-left: 1%;
+        margin-right: 1%;
+        margin-bottom: 2px;
+
+        .prw-navbar-navigation-button-text {
+          @extend .prw-animated-text-visible;
+        }
+
+        &:last-child {
+          margin-bottom: 10px;
+        }
       }
     }
   }

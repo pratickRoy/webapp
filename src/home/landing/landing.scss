@@ -97,6 +97,7 @@
         }
 
         #prw-landing-fragment-content-body {
+            z-index: 100;
             margin-top: 10px;
             text-align: center;
             @extend .fade-in-animate;
@@ -130,6 +131,13 @@
         @extend .fade-in-animate-with-delay;
         z-index: 100;
     }
+}
+
+.prw-link {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 @keyframes fadeInAnimation {

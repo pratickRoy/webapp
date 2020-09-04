@@ -1,4 +1,5 @@
 @import "breakpoints";
+@import "typography";
 
 .prw-full-height {
     height: 100vh;
@@ -19,6 +20,7 @@
 }
 
 .prw-btn {
+    white-space: nowrap;
     --button-small-width: 44px;
     --button-default-height: 49px;
     --button-default-font-size: 14px;
@@ -39,5 +41,86 @@
 
     @include xs {
         --button-small-width: 90px;
+    }
+}
+
+.prw-btn-dark {
+
+    --button-default-height: 48px;
+    --button-default-font-size: 14px;
+    --button-default-border-radius: 1px;
+    --button-horizontal-padding: 21px;
+    --button-raise-level: 1px;
+    --button-hover-pressure: 1;
+    --transform-speed: 0.185s;
+    --button-primary-color: #000000;
+    --button-primary-color-dark: #ffffff;
+    --button-primary-color-light: #d4d9e4;
+    --button-primary-color-hover: #000000;
+    --button-primary-border: 1px solid #ffffff;
+}
+
+.prw-tooltip {
+    text-align: justify;
+    z-index: 1020 !important;
+    max-width: 100% !important;
+}
+
+.prw-toast {
+    @extend .prw-font-family;
+    width: 100vw !important;
+    left: 50% !important;;
+    transform: translateX(-50%) !important;
+
+    @include sm() {
+        width: 70vw !important;
+    }
+
+
+    p {
+        @extend .prw-font-family;
+    }
+
+    .Toastify__toast {
+        background: rgba(18,18,18, .85);
+    }
+}
+
+.prw-blockquote {
+
+    border-left: 10px solid rgb(10, 25, 47);
+    margin: 0.1rem 0.1rem 1rem;
+    padding: 0.5em 10px;
+    quotes: "\201C" "\201D" "\2018" "\2019";
+    font-size: 1rem;
+
+    &:before {
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        color: rgb(10, 25, 47);
+        content: open-quote;
+        font-size: 3rem;
+        line-height: 0.1em;
+        margin-right: 0.25em;
+        vertical-align: -0.4em;
+        font-weight: normal;
+    }
+
+    &:after {
+        content: close-quote;
+        font-size: 0;
+    }
+
+
+    p {
+        font-size: inherit !important;
+        display: inline;
+    }
+
+    .prw-blockquote-author {
+
+        &:before {
+            content: "\a\a";
+            white-space: pre;
+        }
     }
 }

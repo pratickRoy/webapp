@@ -11,9 +11,11 @@ import 'react-awesome-button/dist/themes/theme-eric.css';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {IconDefinition} from "@fortawesome/fontawesome-common-types";
 import ReactResizeDetector from "react-resize-detector";
+import ReactTooltip from "react-tooltip";
 
 interface LandingFragmentProps {
     landingFragmentId : string
+    isFragmentActive : boolean
     navigationRoutes : { id : string, displayName : string, faIcon : IconDefinition }[]
 }
 
@@ -93,7 +95,30 @@ export default class LandingFragment extends React.Component<LandingFragmentProp
                                     <div className="prw-landing-fragment-content-display-image-pulse"/>
                                     <div id={"prw-landing-fragment-content-body"}>
                                         <h1>Pratick Roy</h1>
-                                        <h2>Software Developer</h2>
+                                        <h2>{"Aspiring "}
+                                            <span className={"prw-link"}
+                                               data-tip
+                                               data-for="eudaimonistTip"
+                                               data-event='mouseover click'
+                                               data-event-off='mouseout'>
+                                               Eudaimonist
+                                            </span>
+                                        </h2>
+                                        <ReactTooltip
+                                            id="eudaimonistTip"
+                                            clickable={true}
+                                            type={"light"}
+                                            className={"prw-tooltip"}
+                                            delayHide={500}
+                                            multiline={true}>
+
+                                            This is one of those concepts that doesn't lend itself to easy explanation.<br/>
+                                            Someday, I'll develop the skill to be able to explain it by my own words.<br/>
+                                            Till then, click&nbsp;
+                                            <a href={"https://youtu.be/PrvtOWEXDIQ"} target="_blank">here</a>
+                                            &nbsp;for a crash course video on the topic by hank green. :)<br/>
+
+                                        </ReactTooltip>
                                     </div>
                                 </div>
                                 <div id="prw-landing-fragment-navbar">

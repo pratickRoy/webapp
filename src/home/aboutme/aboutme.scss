@@ -1,0 +1,272 @@
+@import "../../typography";
+@import "../../commons";
+
+$step-count : 9s;
+@mixin show-with-reverse-step($step) {
+
+    opacity: 1;
+    transition: opacity ease-in 0.3s;
+    transition-delay: ($step-count - $step) * 0.3;
+}
+
+#prw-home-page-about-me-fragment {
+
+    background-color : rgb(10, 25, 47);
+    overflow-x: hidden;
+    height : 100vh;
+    display: flex;
+    flex-direction: column;
+
+    #prw-home-page-about-me-fragment-loader {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height : 100vh;
+        width: 100%;
+        font-size: 1rem;
+        z-index: 1;
+
+        svg {
+            width: 20%;
+        }
+
+        &.activated {
+            height: 0;
+            opacity: 0;
+            transition: opacity 2s linear, height 0s linear 2s;
+        }
+    }
+
+    #prw-home-page-about-me-fragment-cards {
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &.deactivated {
+            height : 0;
+            opacity: 0;
+        }
+        &.activated {
+            height: 90vh;
+            opacity: 1;
+            transition: height 2s linear, opacity 2s linear 2s;
+        }
+
+        .prw-home-page-about-me-fragment-card {
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #03a9f4;
+            border-radius: 10px;
+            box-shadow: 0 0 10px 2px #3f51f5;
+            border: 2px solid #3f51b5;
+
+            &.visible {
+
+                width: 90%;
+                height: 90%;
+
+                @include xs() {
+                    width: 80%;
+                    height: 80%;
+                }
+
+                @include sm() {
+                    width: 70%;
+                    height: 70%;
+                }
+
+                transform: translateX(0%);
+                transition: all 400ms ease;
+            }
+
+            &.invisible {
+                width: 0;
+                height: 0;
+                transform: translateX(100%);
+                transition: all 400ms ease;
+            }
+
+            .prw-home-page-about-me-fragment-card-content {
+
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                height: 100%;
+                margin: auto;
+                overflow: auto;
+
+                h1 {
+                    text-align: center;
+                }
+
+                .prw-home-page-about-me-fragment-card-content-paragraph {
+
+                    justify-self: center;
+                    text-align: justify;
+                    font-size: 0.8rem;
+
+                    a {
+                        color: darkgreen;
+                        text-decoration: underline;
+                    }
+                }
+
+                &#prw-home-page-about-me-fragment-work-ex-card-content {
+                    word-break: break-word;
+                    padding: 0 0;
+                    background-color: #0D0208;
+                    border: 5px solid #03a9f4;
+                    border-radius: 10px;
+                    width: 0;
+
+                    &.activated {
+
+                        width: 100%;
+                        transition: width 0.6s ease-in 0.3s;
+                        .MuiTimeline-root {
+
+                            .MuiTimelineItem-root:nth-child(1) { @include show-with-reverse-step(2s) }
+                            .MuiTimelineItem-root:nth-child(2) { @include show-with-reverse-step(3s) }
+                            .MuiTimelineItem-root:nth-child(3) { @include show-with-reverse-step(4s) }
+                            .MuiTimelineItem-root:nth-child(4) { @include show-with-reverse-step(5s) }
+                            .MuiTimelineItem-root:nth-child(5) { @include show-with-reverse-step(6s) }
+                            .MuiTimelineItem-root:nth-child(6) { @include show-with-reverse-step(7s) }
+                            .MuiTimelineItem-root:nth-child(7) { @include show-with-reverse-step(8s) }
+                            .MuiTimelineItem-root:nth-child(8) { @include show-with-reverse-step(9s) }
+                        }
+                    }
+
+                    .resume-btn {
+
+                        width: 120px;
+                        font-size: 0.750rem;
+                        padding: 0.1rem;
+                        font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", "Lucida Console", Monaco, monospace;
+                        text-align: center;
+
+                        @include xxs() {
+                            width: 160px;
+                            font-size: 0.875rem;
+                            padding: 0.2rem;
+                        }
+
+                        @include xs() {
+                            width: 200px;
+                            font-size: 1rem;
+                            padding: 0.3rem;
+                        }
+
+                        margin-bottom: 4px;
+                        color: rgb(0,255,65);
+                        background-color: transparent;
+                        line-height: 1;
+                        cursor: pointer;
+                        border: 1px solid rgb(0,255,65);
+                        border-radius: 3px;
+                        text-decoration: none;
+
+                        &:hover {
+                            background-color: rgba(0,255,65, 0.3);
+                        }
+                    }
+
+                    .MuiTimeline-root {
+                        flex-grow: unset;
+                        padding: 0 0;
+                        margin: auto;
+
+                        .MuiTimelineItem-root:nth-child(n) {
+                            opacity: 0;
+                        }
+
+                        .MuiTimelineItem-root:first-child {
+                            margin-top: 1rem;
+                        }
+
+                        .MuiTimelineItem-root:last-child {
+                            min-height: 0;
+                        }
+                    }
+
+                    .MuiTypography-body2 {
+                        color: #008F11;
+                        font-size: 0.375rem;
+                        @include xxs() {
+                            font-size: 0.5rem;
+                        }
+                        @include xs() {
+                            font-size: 0.875rem;
+                        }
+                    }
+
+                    .MuiTypography-body1 {
+                        color: #00FF41;
+                        font-size: 0.5rem;
+                        @include xxs() {
+                            font-size: 0.750rem;
+                        }
+                        @include xs() {
+                            font-size: 1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #prw-home-page-about-me-fragment-card-controller {
+
+        display: flex;
+        width: 100%;
+        z-index: 1;
+        overflow-x: auto;
+
+        &.deactivated {
+            height : 0;
+            opacity: 0;
+        }
+        &.activated {
+            height: 10vh;
+            opacity: 1;
+            transition: height 2s linear, opacity 2s linear 2s;
+        }
+
+        #prw-home-page-about-me-fragment-card-controller-right-button{
+            display: none;
+            margin: 1%;
+        }
+
+        #prw-home-page-about-me-fragment-card-controller-left-button{
+            display: none;
+            margin: 1%;
+        }
+
+        .aws-btn {
+            @extend .prw-btn-dark;
+            width: fit-content;
+            flex-grow: 1;
+            height: 100%;
+            min-width: 33.333%;
+
+            &.active {
+                background: #ffffff;
+                color: black;
+            }
+
+            .aws-btn__content {
+                font-size: 0.5rem;
+                line-height: normal;
+
+                @include xs() {
+                    font-size: 0.8rem;
+                }
+            }
+        }
+    }
+}

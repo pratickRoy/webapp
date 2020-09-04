@@ -6,12 +6,14 @@ import _ from "underscore";
 import HomePageFragmentMeta from "./HomePageFragmentMeta";
 import { faCode, faFeatherAlt, faInfo, faPaperPlane, faRocket } from "@fortawesome/free-solid-svg-icons";
 import HomeNavBar from "./HomeNavBar";
+import AboutMe from "./aboutme/AboutMeFragment";
 
 interface HomePageProps {
 }
 
 interface HomePageState {
     showNavigationBar : boolean;
+    activeHomePageFragmentId : string
 }
 
 export default class HomePage extends React.Component<HomePageProps, HomePageState> {
@@ -19,8 +21,8 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
     private static HOME_PAGE_ID = "prw-home-page";
 
     private static HOME_PAGE_CHILDREN_FRAGMENT_LIST = [
-        new HomePageFragmentMeta("prw-home-page-landing-fragment", "Houston", faRocket),
-        new HomePageFragmentMeta("prw-home-page-info-fragment", "Info", faInfo),
+        new HomePageFragmentMeta("prw-home-page-landing-fragment", "Eagle", faRocket),
+        new HomePageFragmentMeta("prw-home-page-about-me-fragment", "Me", faInfo),
         new HomePageFragmentMeta("prw-home-page-posts-fragment", "Posts", faFeatherAlt),
         new HomePageFragmentMeta("prw-home-page-projects-fragment", "Projects", faCode),
         new HomePageFragmentMeta("prw-home-page-contact-fragment", "Contact", faPaperPlane),
@@ -29,7 +31,8 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
     constructor(props: HomePageProps) {
         super(props);
         this.state = {
-            showNavigationBar: false
+            showNavigationBar: false,
+            activeHomePageFragmentId: HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[0].id
         }
     }
 
@@ -58,6 +61,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                     }
                 />
                 <LandingFragment
+                    isFragmentActive={HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[0].id == this.state.activeHomePageFragmentId}
                     landingFragmentId={HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[0].id}
                     navigationRoutes={
                         _.map(HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST.slice(1), (homePageFragmentMeta) => {
@@ -69,7 +73,10 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                         })
                     }
                 />
-                <div id={HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[1].id} style={{backgroundColor : "red", height : "100vh"}}><h1>1</h1></div>
+                <AboutMe
+                    isFragmentActive={HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[1].id == this.state.activeHomePageFragmentId}
+                    aboutMeFragmentId={HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[1].id}
+                />
                 <div id={HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[2].id} style={{backgroundColor : "blue", height : "100vh"}}><h1>2</h1></div>
                 <div id={HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[3].id} style={{backgroundColor : "yellow", height : "100vh"}}><h1>3</h1></div>
                 <div id={HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[4].id} style={{backgroundColor : "green", height : "100vh"}}><h1>4</h1></div>
@@ -138,9 +145,14 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
 
                 // Run the callback
                 const majorityId = HomePage.getIdOfAbsoluteMajorityForIdList(idList);
-                if (majorityId && !HomePage.isFragmentOverflowing(majorityId)) {
-                    isSmoothScrolling = true
-                    SmoothScrollUtils.scrollToId(majorityId, () => {isSmoothScrolling = false});
+                if (majorityId) {
+                    homePageInstance.setState({
+                        activeHomePageFragmentId : majorityId
+                    })
+                    if (!HomePage.isFragmentOverflowing(majorityId)) {
+                        isSmoothScrolling = true
+                        SmoothScrollUtils.scrollToId(majorityId, () => {isSmoothScrolling = false});
+                    }
                 }
 
                 // Hide navbar after 2 seconds of no scroll
@@ -188,9 +200,6 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                 - (rect.bottom <= windowBottom ? 0 : rect.bottom - windowBottom);
 
             const heightPercentage = heightOfElement / windowHeight * 100;
-
-            console.log(id)
-            console.log(heightPercentage)
 
             if (heightPercentage > majorityElementHeightPercentage) {
 
