@@ -7,6 +7,7 @@ import HomePageFragmentMeta from "./HomePageFragmentMeta";
 import { faCode, faFeatherAlt, faInfo, faPaperPlane, faRocket } from "@fortawesome/free-solid-svg-icons";
 import HomeNavBar from "./HomeNavBar";
 import AboutMe from "./aboutme/AboutMeFragment";
+import PostFragment from "./posts/PostFragment";
 
 interface HomePageProps {
 }
@@ -77,7 +78,9 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                     isFragmentActive={HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[1].id == this.state.activeHomePageFragmentId}
                     aboutMeFragmentId={HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[1].id}
                 />
-                <div id={HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[2].id} style={{backgroundColor : "blue", height : "100vh"}}><h1>2</h1></div>
+                <PostFragment
+                    isFragmentActive={HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[2].id == this.state.activeHomePageFragmentId}
+                    postFragmentId={HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[2].id}/>
                 <div id={HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[3].id} style={{backgroundColor : "yellow", height : "100vh"}}><h1>3</h1></div>
                 <div id={HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[4].id} style={{backgroundColor : "green", height : "100vh"}}><h1>4</h1></div>
             </div>
