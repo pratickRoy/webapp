@@ -8,6 +8,7 @@ import { faCode, faFeatherAlt, faInfo, faPaperPlane, faRocket } from "@fortaweso
 import HomeNavBar from "./HomeNavBar";
 import AboutMe from "./aboutme/AboutMeFragment";
 import PostFragment from "./posts/PostFragment";
+import ProjectsFragment from "./projects/ProjectsFragment";
 
 interface HomePageProps {
 }
@@ -24,8 +25,8 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
     private static HOME_PAGE_CHILDREN_FRAGMENT_LIST = [
         new HomePageFragmentMeta("prw-home-page-landing-fragment", "Eagle", faRocket),
         new HomePageFragmentMeta("prw-home-page-about-me-fragment", "Me", faInfo),
-        new HomePageFragmentMeta("prw-home-page-posts-fragment", "Posts", faFeatherAlt),
-        new HomePageFragmentMeta("prw-home-page-projects-fragment", "Projects", faCode),
+        new HomePageFragmentMeta("prw-home-page-posts-fragment", "Weblog", faFeatherAlt),
+        new HomePageFragmentMeta("prw-home-page-projects-fragment", "Builds", faCode),
         new HomePageFragmentMeta("prw-home-page-contact-fragment", "Contact", faPaperPlane),
     ]
 
@@ -81,7 +82,10 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                 <PostFragment
                     isFragmentActive={HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[2].id == this.state.activeHomePageFragmentId}
                     postFragmentId={HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[2].id}/>
-                <div id={HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[3].id} style={{backgroundColor : "yellow", height : "100vh"}}><h1>3</h1></div>
+                <ProjectsFragment
+                    isFragmentActive={HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[3].id == this.state.activeHomePageFragmentId}
+                    projectsFragmentId={HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[3].id}
+                />
                 <div id={HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[4].id} style={{backgroundColor : "green", height : "100vh"}}><h1>4</h1></div>
             </div>
         )
