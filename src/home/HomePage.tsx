@@ -9,6 +9,8 @@ import HomeNavBar from "./HomeNavBar";
 import AboutMe from "./aboutme/AboutMeFragment";
 import PostFragment from "./posts/PostFragment";
 import ProjectsFragment from "./projects/ProjectsFragment";
+import ContactFragment from "./contact/ContactFragment";
+import {ToastContainer} from "react-toastify";
 
 interface HomePageProps {
 }
@@ -27,7 +29,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
         new HomePageFragmentMeta("prw-home-page-about-me-fragment", "Me", faInfo),
         new HomePageFragmentMeta("prw-home-page-posts-fragment", "Weblog", faFeatherAlt),
         new HomePageFragmentMeta("prw-home-page-projects-fragment", "Builds", faCode),
-        new HomePageFragmentMeta("prw-home-page-contact-fragment", "Contact", faPaperPlane),
+        new HomePageFragmentMeta("prw-home-page-contact-fragment", "Say Hi", faPaperPlane),
     ]
 
     constructor(props: HomePageProps) {
@@ -86,7 +88,11 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                     isFragmentActive={HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[3].id == this.state.activeHomePageFragmentId}
                     projectsFragmentId={HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[3].id}
                 />
-                <div id={HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[4].id} style={{backgroundColor : "green", height : "100vh"}}><h1>4</h1></div>
+                <ContactFragment
+                    isFragmentActive={HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[4].id == this.state.activeHomePageFragmentId}
+                    contactFragmentId={HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[4].id}
+                />
+                <ToastContainer/>
             </div>
         )
     }

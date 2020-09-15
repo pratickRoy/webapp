@@ -1,0 +1,238 @@
+@import "../../commons";
+
+#prw-home-page-contact-fragment {
+
+    display: flex;
+    flex-direction: column;
+    background-color : #7510F7;
+    height : 100vh;
+    overflow: hidden;
+
+    #prw-home-page-contact-fragment-loader {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height : 100vh;
+        width: 100%;
+        font-size: 1rem;
+        z-index: 1;
+
+        svg {
+            width: 20%;
+        }
+
+        &.activated {
+            height: 0;
+            opacity: 0;
+            transition: opacity 2s linear, height 0s linear 2s;
+        }
+    }
+
+    #prw-home-page-contact-fragment-form-wrapper {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        &.deactivated {
+            height : 0;
+            opacity: 0;
+        }
+
+        &.activated {
+            height: 80vh;
+            opacity: 1;
+            transition: height 2s linear, opacity 2s linear 2s;
+
+            #prw-home-page-contact-fragment-form {
+
+                transform: skewY(-10deg);
+                transition: transform 0.5s linear 4s;
+                overflow: hidden;
+            }
+        }
+
+        #prw-home-page-contact-fragment-form {
+
+            display: flex;
+            flex-direction: column;
+            width: 90%;
+            @include xs() {
+                width: 70%;
+            }
+            @include sm() {
+                width: 50%;
+            }
+
+            .prw-home-page-contact-fragment-form-group {
+
+                margin-bottom: 2px;
+
+                .prw-home-page-contact-fragment-form-input {
+                    background-color: #1E242C;
+                    color: white;
+                    border-radius: 0;
+                    border: none;
+
+                    &::placeholder {
+                        color: whitesmoke;
+                    }
+
+                    $input-size: 38px;
+                    &#prw-home-page-contact-fragment-form-message-input {
+                        max-height: 1 * $input-size;
+                        @include xxsh() { max-height: 2 * $input-size }
+                        @include xsh() { max-height: 3 * $input-size }
+                        @include smh() { max-height: 50vh }
+                    }
+                }
+            }
+
+            .aws-btn {
+
+                @extend .prw-btn-dark;
+                --button-raise-level: 4px;
+                --button-hover-pressure: 2;
+
+                margin-top: 1rem;
+                align-self: flex-end;
+            }
+        }
+    }
+
+    #prw-home-page-contact-fragment-header-image {
+
+        &.deactivated {
+            height : 0;
+            opacity: 0;
+            transform: translateY(20vh);
+        }
+
+        &.activated {
+            width: 100%;
+            height: 10vh;
+            opacity: 1;
+            transform: translateY(0vh);
+            transition: height 2s linear, opacity 2s linear 2s, transform 0.5s linear 4s;
+        }
+    }
+
+    #prw-home-page-contact-fragment-social-media-buttons {
+
+        display: flex;
+        background-color: white;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        .prw-home-page-projects-social-media-button {
+            width: 40px;
+            height: 40px;
+            max-height: 100%;
+            border-radius: 50%;
+            padding: 0.5rem;
+            color: #7510F7;
+            background-color: white;
+            border: 1px solid #7510F7;
+            margin: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+
+            &:hover {
+                color: white;
+                background-color: #7510F7;
+                border: 1px solid white;
+            }
+        }
+
+        &.deactivated {
+            height : 0;
+            opacity: 0;
+            transform: translateY(20vh);
+
+            .prw-home-page-projects-social-media-button {
+
+                transform: translateY(10vh) rotate(0);
+            }
+        }
+
+        &.activated {
+            width: 100%;
+            height: 10vh;
+            opacity: 1;
+            transform: translateY(0vh);
+            transition: height 2s linear, opacity 2s linear 2s, transform 0.5s linear 4s;
+
+            .prw-home-page-projects-social-media-button {
+
+                &:nth-child(1) {
+                    transform: translateY(0vh) rotate(360deg);
+                    transition: color 0.5s linear, background-color 0.5s linear, border 0.5s linear, transform 1s ease-out 4.5s;
+                    animation: SocialMediaButtonAnimation 1s ease-out 4.5s 2 alternate;
+                }
+                &:nth-child(2) {
+                    transform: translateY(0vh) rotate(360deg);
+                    transition: color 0.5s linear, background-color 0.5s linear, border 0.5s linear, transform 1s ease-out 5.5s;
+                    animation: SocialMediaButtonAnimation 1s ease-out 5.5s 2 alternate;
+                }
+                &:nth-child(3) {
+                    transform: translateY(0vh) rotate(360deg);
+                    transition: color 0.5s linear, background-color 0.5s linear, border 0.5s linear, transform 1s ease-out 6.5s;
+                    animation: SocialMediaButtonAnimation 1s ease-out 6.5s 2 alternate;
+                }
+                &:nth-child(4) {
+                    transform: translateY(0vh) rotate(360deg);
+                    transition: color 0.5s linear, background-color 0.5s linear, border 0.5s linear, transform 1s ease-out 7.5s;
+                    animation: SocialMediaButtonAnimation 1s ease-out 7.5s 2 alternate;
+                }
+            }
+        }
+    }
+}
+
+.prw-home-page-contact-fragment-progress-bar-wrapper {
+    top: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    display: none;
+    background-color: rgba(0,0,0,.9);
+
+    &.active {
+        display: flex;
+    }
+
+    .prw-home-page-contact-fragment-progress-bar {
+        margin: auto;
+    }
+}
+
+@keyframes SocialMediaButtonAnimation {
+    0% {
+        color: #7510F7;
+        background-color: white;
+        border: 1px solid #7510F7;
+    }
+    100% {
+        color: white;
+        background-color: #7510F7;
+        border: 1px solid white;
+    }
+}
+
+@keyframes slide-fwd-center {
+    0% {
+        transform: translateZ(0);
+    }
+    100% {
+        transform: translateZ(160px);
+    }
+}

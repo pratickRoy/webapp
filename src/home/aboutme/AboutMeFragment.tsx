@@ -34,6 +34,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUniversity} from "@fortawesome/free-solid-svg-icons";
 import {Nav} from "react-bootstrap";
 import {white} from "material-ui/styles/colors";
+import {ToastOptions} from "react-toastify/dist/types";
 
 
 interface AboutMeProps {
@@ -50,6 +51,17 @@ interface AboutMeState {
 export default class AboutMe extends React.Component<AboutMeProps, AboutMeState> {
 
     private static DEFAULT_ABOUT_ME_FRAGMENT_ID = "prw-home-page-about-me-fragment";
+    private static readonly ABOUT_ME_TOAST_OPTIONS : ToastOptions = {
+        className: "prw-toast",
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        rtl: false,
+        pauseOnFocusLoss: true,
+        draggable: true,
+        pauseOnHover: true
+    }
 
     static defaultProps = {
         aboutMeFragmentId : AboutMe.DEFAULT_ABOUT_ME_FRAGMENT_ID
@@ -80,7 +92,7 @@ export default class AboutMe extends React.Component<AboutMeProps, AboutMeState>
                     To move the cards, use the buttons or
                     press the &#8592; and &#8594; keys
                     and (only if you are a gamer)
-                    the A & D keys work as well :)"</p>);
+                    the A & D keys work as well :)"</p>, AboutMe.ABOUT_ME_TOAST_OPTIONS);
                 this.setState({isFragmentActivated : true})
                 return
             }
@@ -386,18 +398,6 @@ export default class AboutMe extends React.Component<AboutMeProps, AboutMeState>
                         Work Ex.
                     </AwesomeButton>
                 </div>
-                <ToastContainer
-                    className={"prw-toast"}
-                    position="top-center"
-                    autoClose={5000}
-                    hideProgressBar={false}
-                    newestOnTop
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                />
             </div>
         )
     }

@@ -23,6 +23,12 @@ $screen-xl-min: 1200px;
     }
 }
 
+@mixin xxsh {
+    @media (min-height: #{$screen-xxs-min}) {
+        @content;
+    }
+}
+
 @mixin xs {
     @media (min-width: #{$screen-xs-min}) {
         @content;
@@ -42,9 +48,21 @@ $screen-xl-min: 1200px;
     }
 }
 
+@mixin smh {
+    @media (min-height: #{$screen-sm-min}) {
+        @content;
+    }
+}
+
 // Medium devices
 @mixin md {
     @media (min-width: #{$screen-md-min}) {
+        @content;
+    }
+}
+
+@mixin mdh {
+    @media (min-height: #{$screen-md-min}) {
         @content;
     }
 }
@@ -56,9 +74,21 @@ $screen-xl-min: 1200px;
     }
 }
 
+@mixin lgh {
+    @media (min-height: #{$screen-lg-min}) {
+        @content;
+    }
+}
+
 // Extra large devices
 @mixin xl {
     @media (min-width: #{$screen-xl-min}) {
+        @content;
+    }
+}
+
+@mixin xlh {
+    @media (min-height: #{$screen-xl-min}) {
         @content;
     }
 }
