@@ -2,6 +2,7 @@ import React from "react";
 import NavBar from "../NavBar";
 import Game from "./Game";
 import MVPIntroModal from "../MVPIntroModal";
+import {GApageView} from "../index";
 
 interface TicTacToePageProps {
 }
@@ -17,6 +18,10 @@ export default class TicTacToePage extends React.Component<TicTacToePageProps, T
         this.state = {
             introCompleted : false
         }
+    }
+
+    componentDidMount() {
+        GApageView("builds/tictactoe");
     }
 
     render() {

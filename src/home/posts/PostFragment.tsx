@@ -6,6 +6,9 @@ import AreVoidMethodsBadFeatureImage from "./assets/are-void-methods-bad-feature
 import WhatIsGoodCodeFeatureImage from "./assets/what-is-good-code-feature-image.png"
 // @ts-ignore
 import {AwesomeButton} from "react-awesome-button";
+import {GAevent, GApageView} from "../../index";
+import {toast} from "react-toastify";
+import {ToastOptions} from "react-toastify/dist/types";
 
 interface PostFragmentProps {
     postFragmentId : string
@@ -14,11 +17,23 @@ interface PostFragmentProps {
 
 interface PostFragmentState {
     isFragmentActivated : boolean
+    isPostReferred : boolean
 }
 
 export default class PostFragment extends React.Component<PostFragmentProps, PostFragmentState> {
 
     private static DEFAULT_ABOUT_ME_FRAGMENT_ID = "prw-home-page-posts-fragment";
+    private static readonly POST_TOAST_OPTIONS : ToastOptions = {
+        className: "prw-toast",
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        rtl: false,
+        pauseOnFocusLoss: true,
+        draggable: true,
+        pauseOnHover: true,
+    }
 
     static defaultProps = {
         aboutMeFragmentId : PostFragment.DEFAULT_ABOUT_ME_FRAGMENT_ID
@@ -28,7 +43,8 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
 
         super(props);
         this.state = {
-            isFragmentActivated : false
+            isFragmentActivated : false,
+            isPostReferred : false
         }
     }
 
@@ -42,10 +58,49 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
 
     componentDidUpdate(prevProps: Readonly<PostFragmentProps>, prevState: Readonly<PostFragmentState>, snapshot?: any) {
 
+        if (!prevProps.isFragmentActive && this.props.isFragmentActive) {
+            //window.history.replaceState("object or string", "", "/home/post");
+            GApageView("home/post");
+        }
+
         if (this.props.isFragmentActive) {
             if (!this.state.isFragmentActivated) {
+                GAevent("PostFragment", "Activated Fragment")
                 this.setState({isFragmentActivated: true})
                 this.updatePostWidth();
+                const title = new URLSearchParams(window.location.search).get("blogTitle")
+                const post = $("[data-name='" + title + "']")
+
+                if (window.location.pathname.includes("weblog") && post) {
+
+                    GAevent("PostFragment", "Referred Post", title)
+                    this.setState({isPostReferred : true});
+                    toast.dark(
+                        <p>
+                            Hi. Thank you for coming to read my blog. I'll redirect you to the full post
+                            as soon as the the loading finishes. After reading do come back to check out
+                            the rest of my website :)<br/>
+
+                            If not automatically redirected, please click on the card or allow popups from this page.
+                        </p>,
+                        Object.assign(
+                            {
+                                onClose: () => {
+                                    GAevent("PostFragment", "Referred Post Redirection Attempted", title)
+                                    window.open(post.data("url"), "_blank")
+                                }
+
+                            } as ToastOptions,
+                            PostFragment.POST_TOAST_OPTIONS
+                        )
+                    );
+                    setTimeout(() => {
+                        $("#prw-home-page-posts-fragment-posts").animate(
+                            {scrollLeft: post.offset()!.left - 10},
+                            'slow'
+                        );
+                    }, 2000);
+                }
             }
         }
     }
@@ -135,6 +190,7 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
                 <a
                     id={"prw-home-page-posts-fragment-see-all-posts"}
                     className={activatedDeactivatedClass}
+                    onClick={() => { GAevent("PostFragment", "Show All Posts Engaged") }}
                     href="https://medium.com/@pratickRoy"
                     target="_blank">
                     See all Posts
@@ -154,11 +210,21 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
             ? "activated"
             : "deactivated";
 
+        const isPostReferredStyle = this.state.isPostReferred
+            ? {transition: "none"}
+            : {};
+
         return (
             <li>
                 <Card
+                    data-name={postTitle + " | " + postSubtitle}
+                    data-url={url}
                     className={"prw-home-page-posts-fragment-post " + activatedDeactivatedClass}
-                    onClick={() => { window.open(url, "_blank")}}>
+                    style={isPostReferredStyle}
+                    onClick={() => {
+                        GAevent("PostFragment", "Post Engaged", (postTitle + " | " + postSubtitle))
+                        window.open(url, "_blank")}
+                    }>
 
                     <CardContent className={"prw-home-page-posts-fragment-post-content"}>
                         <CardMedia

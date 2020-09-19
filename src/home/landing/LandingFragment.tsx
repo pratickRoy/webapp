@@ -12,6 +12,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {IconDefinition} from "@fortawesome/fontawesome-common-types";
 import ReactResizeDetector from "react-resize-detector";
 import ReactTooltip from "react-tooltip";
+import {GAevent, GApageView} from "../../index";
 
 interface LandingFragmentProps {
     landingFragmentId : string
@@ -21,6 +22,7 @@ interface LandingFragmentProps {
 
 interface LandingFragmentState {
     height? : string
+    isFragmentActivated : boolean
 }
 
 export default class LandingFragment extends React.Component<LandingFragmentProps, LandingFragmentState> {
@@ -34,30 +36,45 @@ export default class LandingFragment extends React.Component<LandingFragmentProp
 
     constructor(props: LandingFragmentProps) {
         super(props);
-        this.state = {}
+        this.state = {
+            isFragmentActivated : false,
+        }
     }
 
     /**
      * On Fragment Load, we prevent scrolling until animation completes, allowing user to properly experience the ux.
      */
-    componentDidMount() {
 
-        const fragment : Element = document.querySelector(this.props.landingFragmentId)!;
+    componentDidUpdate(prevProps: Readonly<LandingFragmentProps>, prevState: Readonly<LandingFragmentState>, snapshot?: any) {
 
-        disableBodyScroll(fragment);
-        setTimeout(
-            () => { enableBodyScroll(fragment);
-            },
-            LandingFragment.ON_LOAD_ANIMATION_TIME_DURATION_IN_MILLIS
-        );
+        if (!prevProps.isFragmentActive && this.props.isFragmentActive) {
+            GApageView("home/landing");
+        }
+
+        if (this.props.isFragmentActive) {
+            if (!this.state.isFragmentActivated) {
+
+                GAevent("LandingFragment", "Activated Fragment")
+                this.setState({isFragmentActivated: true})
+
+                const fragment : Element = document.querySelector(this.props.landingFragmentId)!;
+                setTimeout(
+                    () => {
+                        enableBodyScroll(fragment);
+                    },
+                    LandingFragment.ON_LOAD_ANIMATION_TIME_DURATION_IN_MILLIS
+                );
+                disableBodyScroll(fragment);
+            }
+        }
     }
 
     render() {
 
-        return (
-            <div id={this.props.landingFragmentId}
-                 className={"prw-landing-fragment"}
-                 style={this.state.height == undefined ? {} : {height: this.state.height}}>
+        const landing = this.state.isFragmentActivated
+            ? (<div id={this.props.landingFragmentId}
+                    className={"prw-landing-fragment"}
+                    style={this.state.height == undefined ? {} : {height: this.state.height}}>
                 <div id={"prw-landing-fragment-background"}
                      style={this.state.height == undefined ? {} : {height: this.state.height}}/>
                 <div id={"prw-landing-fragment-background-overlay"}
@@ -97,10 +114,10 @@ export default class LandingFragment extends React.Component<LandingFragmentProp
                                         <h1>Pratick Roy</h1>
                                         <h2>{"Aspiring "}
                                             <span className={"prw-link"}
-                                               data-tip
-                                               data-for="eudaimonistTip"
-                                               data-event='mouseover click'
-                                               data-event-off='mouseout'>
+                                                  data-tip
+                                                  data-for="eudaimonistTip"
+                                                  data-event='mouseover click'
+                                                  data-event-off='mouseout'>
                                                Eudaimonist
                                             </span>
                                         </h2>
@@ -133,8 +150,12 @@ export default class LandingFragment extends React.Component<LandingFragmentProp
                         );
                     }}
                 </ReactResizeDetector>
-            </div>
-        )
+            </div>)
+            : (<div id={this.props.landingFragmentId}
+                    className={"prw-landing-fragment"}
+                    style={this.state.height == undefined ? {} : {height: this.state.height}}/>);
+
+        return (landing)
     }
 
     private getNavigationButton(id: string, displayName: string, faIcon: IconDefinition) {

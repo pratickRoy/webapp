@@ -35,6 +35,7 @@ import {faUniversity} from "@fortawesome/free-solid-svg-icons";
 import {Nav} from "react-bootstrap";
 import {white} from "material-ui/styles/colors";
 import {ToastOptions} from "react-toastify/dist/types";
+import {GAevent, GApageView} from "../../index";
 
 
 interface AboutMeProps {
@@ -85,9 +86,14 @@ export default class AboutMe extends React.Component<AboutMeProps, AboutMeState>
 
     componentDidUpdate(prevProps: Readonly<AboutMeProps>, prevState: Readonly<AboutMeState>, snapshot?: any) {
 
+        if (!prevProps.isFragmentActive && this.props.isFragmentActive) {
+            GApageView("home/aboutme");
+        }
+
         if (this.props.isFragmentActive) {
 
             if (!this.state.isFragmentActivated) {
+                GAevent("AboutMeFragment", "Activated Fragment")
                 toast.dark(<p>
                     To move the cards, use the buttons or
                     press the &#8592; and &#8594; keys

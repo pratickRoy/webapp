@@ -9,8 +9,6 @@ interface AppState {}
 
 export default class App extends React.Component<AppProps, AppState> {
 
-    private static HOME_PATH = "/pratick-roy-website"
-
     constructor(props: AppProps) {
 
         super(props);
@@ -22,10 +20,10 @@ export default class App extends React.Component<AppProps, AppState> {
         return (
             <Router>
                 <Switch>
-                    <Route exact path={App.HOME_PATH}>
+                    <Route path={App.buildRoutePath("home")}>
                         <HomePage />
                     </Route>
-                    <Route path={App.buildRoutePath("tictactoe")}>
+                    <Route path={App.buildRoutePath("builds/tictactoe")}>
                         <TicTacToePage />
                     </Route>
                 </Switch>
@@ -35,6 +33,6 @@ export default class App extends React.Component<AppProps, AppState> {
 
     private static buildRoutePath(pagePath : string) {
 
-        return App.HOME_PATH + "/" + pagePath;
+        return "/" + pagePath;
     }
 }

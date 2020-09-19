@@ -11,6 +11,7 @@ import PostFragment from "./posts/PostFragment";
 import ProjectsFragment from "./projects/ProjectsFragment";
 import ContactFragment from "./contact/ContactFragment";
 import {ToastContainer} from "react-toastify";
+import {GApageView} from "../index";
 
 interface HomePageProps {
 }
@@ -36,12 +37,20 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
         super(props);
         this.state = {
             showNavigationBar: false,
-            activeHomePageFragmentId: HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[0].id
+            activeHomePageFragmentId: ""
         }
     }
 
     componentDidMount() {
-        this.setupSmoothScrollForFragmentChildren();
+        GApageView("home");
+
+        const url = window.location.pathname;
+        console.log(url)
+        if (url.includes("weblog")) {
+            this.setupSmoothScrollForFragmentChildren(2);
+        } else {
+            this.setupSmoothScrollForFragmentChildren(0);
+        }
     }
 
     componentWillUnmount() {
@@ -102,7 +111,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
         $(window).off('scroll')
     }
 
-    private setupSmoothScrollForFragmentChildren() {
+    private setupSmoothScrollForFragmentChildren(startId : number) {
 
         this.setupSmoothScrollForIds(
 
@@ -111,14 +120,25 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                 if (element.id) {
                     return (child as HTMLElement).id
                 }
-            })
+            }),
+            startId
         )
     }
 
-    private setupSmoothScrollForIds(idList : string[]) {
+    private setupSmoothScrollForIds(idList : string[], startId : number) {
 
         let isSmoothScrolling = true
-        SmoothScrollUtils.scrollToId(idList[0], () => {isSmoothScrolling = false});
+
+        this.setState({
+            activeHomePageFragmentId : HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST[startId].id
+        })
+        SmoothScrollUtils.scrollToId(
+            idList[startId],
+            () => {
+                isSmoothScrolling = false
+                this.setState({showNavigationBar: false})
+            }
+        );
 
         let isScrolling: number | NodeJS.Timeout | undefined;
 

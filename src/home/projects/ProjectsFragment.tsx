@@ -20,6 +20,7 @@ import {faBrain, faCode} from "@fortawesome/free-solid-svg-icons";
 import {Fab} from "@material-ui/core";
 import ArrowBackIosSharpIcon from "@material-ui/icons/ArrowBackIosSharp";
 import ArrowForwardIosSharpIcon from "@material-ui/icons/ArrowForwardIosSharp";
+import {GAevent, GApageView} from "../../index";
 
 interface ProjectsFragmentProps {
     isFragmentActive : boolean,
@@ -59,8 +60,14 @@ export default class ProjectsFragment
 
     componentDidUpdate(prevProps: Readonly<ProjectsFragmentProps>, prevState: Readonly<ProjectsFragmentState>, snapshot?: any) {
 
+        if (!prevProps.isFragmentActive && this.props.isFragmentActive) {
+            //window.history.replaceState("object or string", "", "/home/projects");
+            GApageView("home/projects");
+        }
+
         if (this.props.isFragmentActive) {
             if (!this.state.isFragmentActivated) {
+                GAevent("ProjectsFragment", "Activated Fragment")
                 this.setState({isFragmentActivated: true})
                 this.updateProjectWidth();
 
@@ -174,7 +181,7 @@ export default class ProjectsFragment
 
                         <div className={"prw-home-page-projects-fragment-project-content"}>
                             <img src={DotsFeatureImage}/>
-                            <h1><a href={"broken"} target={"_blank"}>Dots</a></h1>
+                            <h1><a href={"https://play.google.com/store/apps/details?id=com.dots.games.pratick.dots"} target={"_blank"}>Dots</a></h1>
                             <div className={"prw-home-page-projects-fragment-project-tags"}>
                                 <FontAwesomeIcon
                                     className={"prw-home-page-projects-fragment-project-tag"}
@@ -196,7 +203,7 @@ export default class ProjectsFragment
 
                         <div className={"prw-home-page-projects-fragment-project-content"}>
                             <img src={TicTacToeFeatureImage}/>
-                            <h1><a href={"pratick-roy-website/tictactoe"} target={"_blank"}>T<sup>3</sup></a></h1>
+                            <h1><a href={"/builds/tictactoe"} target={"_blank"}>T<sup>3</sup></a></h1>
                             <div className={"prw-home-page-projects-fragment-project-tags"}>
                                 <FontAwesomeIcon
                                     className={"prw-home-page-projects-fragment-project-tag"}

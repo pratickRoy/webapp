@@ -12,6 +12,7 @@ import {CircularProgress} from "@material-ui/core";
 import {faFacebook, faGithubAlt, faLinkedin, faTwitter} from "@fortawesome/free-brands-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEnvelope} from "@fortawesome/free-solid-svg-icons";
+import {GAevent, GApageView} from "../../index";
 
 interface ContactFragmentProps {
     contactFragmentId : string
@@ -60,8 +61,13 @@ export default class ContactFragment extends React.Component<ContactFragmentProp
 
     componentDidUpdate(prevProps: Readonly<ContactFragmentProps>, prevState: Readonly<ContactFragmentState>, snapshot?: any) {
 
+        if (!prevProps.isFragmentActive && this.props.isFragmentActive) {
+            GApageView("home/contact");
+        }
+
         if (this.props.isFragmentActive) {
             if (!this.state.isFragmentActivated) {
+                GAevent("ContactFragment", "Activated Fragment")
                 this.setState({isFragmentActivated: true})
             }
         }

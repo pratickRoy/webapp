@@ -67,22 +67,20 @@
 }
 
 .prw-toast {
-    @extend .prw-font-family;
-    width: 100vw !important;
-    left: 50% !important;;
-    transform: translateX(-50%) !important;
 
-    @include sm() {
-        width: 70vw !important;
-    }
+    &.Toastify__toast {
 
-
-    p {
         @extend .prw-font-family;
-    }
+        background: rgba(18,18,18, .97);
 
-    .Toastify__toast {
-        background: rgba(18,18,18, .85);
+        @at-root .Toastify__toast-container {
+            width: 100vw !important;
+            @include sm() { width: 70vw !important;}
+        }
+
+        p {
+            @extend .prw-font-family;
+        }
     }
 }
 
