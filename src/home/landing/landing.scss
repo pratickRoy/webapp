@@ -21,6 +21,8 @@
     flex-direction: column;
     @extend .prw-full-height;
     background-color: black;
+    height: 100vh;
+    pointer-events: none;
 
     #prw-landing-fragment-background {
         @extend .fade-in-animate-with-delay;
@@ -29,7 +31,7 @@
         opacity: 0;
         width: 100%;
         @extend .prw-full-height;
-        background: url("https://drive.google.com/uc?export=view&id=1bjKOOl2sm43tjC3oT-aejg8zbOgi4btg") no-repeat;
+        background: url("./assets/landing-fragment-background-image.jpg") no-repeat;
         background-size: 100% 100%;
     }
 
@@ -51,13 +53,15 @@
     #prw-landing-fragment-content {
         z-index: 100;
         width: 100%;
+        height: calc(80vh - 10px);
         @extend .prw-full-height;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        flex-wrap: wrap;
         justify-content: center;
+        align-items: center;
+        overflow-y: auto;
         color: white;
-        margin-top: 10px;
         font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
 
         #prw-landing-fragment-content-display-image {
@@ -65,18 +69,22 @@
             z-index: 100;
             border-radius: 50%;
             background-color: black;
-
             width: 20%;
-            max-width: 75px;
 
+            max-width: 75px;
             @include xxs {
-                width: 35%;
-                max-width: 150px;
+                @include xxsh {
+                    width: 35%;
+                    max-width: 150px;
+                }
             }
             @include xs {
-                width: 50%;
-                max-width: 225px;
+                @include xsh {
+                    width: 50%;
+                    max-width: 225px;
+                }
             }
+
         }
 
         .prw-landing-fragment-content-display-image-pulse {
@@ -108,9 +116,11 @@
     #prw-landing-fragment-navbar {
 
         z-index: 100;
-        padding-bottom: 2%;
+        height: 20vh;
+        padding-bottom: 10px;
         display: flex;
         flex-direction: row;
+        align-items: flex-end;
         justify-content: center;
         flex-wrap: wrap;
         row-gap: 3px;
@@ -120,14 +130,17 @@
 
         div {
             margin-left: 1%;
+            max-height: 100%;
         }
 
         .aws-btn {
-            @extend .prw-btn
+            @extend .prw-btn;
+            max-height: 100%;
         }
     }
 
     .prw-landing-fragment-bottom-decoration {
+        height: calc(10px);
         @extend .fade-in-animate-with-delay;
         z-index: 100;
     }

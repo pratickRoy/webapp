@@ -13,6 +13,7 @@ import {IconDefinition} from "@fortawesome/fontawesome-common-types";
 import ReactResizeDetector from "react-resize-detector";
 import ReactTooltip from "react-tooltip";
 import {GAevent, GApageView} from "../../index";
+import LandingFragmentDisplayImage from "./assets/landing-fragment-display-image.jpg"
 
 interface LandingFragmentProps {
     landingFragmentId : string
@@ -61,6 +62,7 @@ export default class LandingFragment extends React.Component<LandingFragmentProp
                 setTimeout(
                     () => {
                         enableBodyScroll(fragment);
+                        $(".prw-landing-fragment").css('pointer-events', 'auto');
                     },
                     LandingFragment.ON_LOAD_ANIMATION_TIME_DURATION_IN_MILLIS
                 );
@@ -105,7 +107,7 @@ export default class LandingFragment extends React.Component<LandingFragmentProp
                                 <div id={"prw-landing-fragment-content"}>
                                     <img
                                         id={"prw-landing-fragment-content-display-image"}
-                                        src={"https://drive.google.com/uc?export=view&id=1qd6_90DZBimSdwkO9ZjLZwYibQEWenbA"}
+                                        src={LandingFragmentDisplayImage}
                                     />
                                     <div className="prw-landing-fragment-content-display-image-pulse"/>
                                     <div className="prw-landing-fragment-content-display-image-pulse"/>
@@ -127,12 +129,28 @@ export default class LandingFragment extends React.Component<LandingFragmentProp
                                             type={"light"}
                                             className={"prw-tooltip"}
                                             delayHide={500}
-                                            multiline={true}>
+                                            multiline={true}
+                                            afterShow={() => {
+                                                GAevent(
+                                                "LandingFragment",
+                                                "Eudaimonist Tooltip Engaged"
+                                            )}}>
 
                                             This is one of those concepts that doesn't lend itself to easy explanation.<br/>
                                             Someday, I'll develop the skill to be able to explain it by my own words.<br/>
                                             Till then, click&nbsp;
-                                            <a href={"https://youtu.be/PrvtOWEXDIQ"} target="_blank">here</a>
+                                            <a
+                                                onClick={() => {
+                                                    GAevent(
+                                                        "LandingFragment",
+                                                        "Eudaimonist Crash Course Video Engaged"
+                                                    )
+                                                }}
+                                                href={"https://youtu.be/PrvtOWEXDIQ"}
+                                                target="_blank">
+
+                                                here
+                                            </a>
                                             &nbsp;for a crash course video on the topic by hank green. :)<br/>
 
                                         </ReactTooltip>
@@ -172,6 +190,11 @@ export default class LandingFragment extends React.Component<LandingFragmentProp
                 <AwesomeButton
                     size={"small"}
                     onReleased={() => {
+                        GAevent(
+                            "LandingFragment",
+                            "Fragment Navigation Button Engaged",
+                            displayName
+                        )
                         $("#" + displayNameSpanId).addClass(hiddenClass);
                         SmoothScrollUtils.scrollToId(id);
                     }}>

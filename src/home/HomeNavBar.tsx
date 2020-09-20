@@ -8,6 +8,7 @@ import SmoothScrollUtils from "../utils/SmoothScrollUtils";
 import {AwesomeButton} from "react-awesome-button";
 import {IconDefinition} from "@fortawesome/fontawesome-common-types";
 import HorizontalColorBandDivider from "../components/HorizontalColorBandDivider";
+import {GAevent} from "../index";
 
 interface HomeNavBarProps {
     showNavigationBar : boolean
@@ -58,6 +59,11 @@ export default class HomeNavBar extends React.Component<HomeNavBarProps, HomeNav
                                         <AwesomeButton
                                             size={"small"}
                                             onReleased={() => {
+                                                GAevent(
+                                                    "HomeNavBar",
+                                                    "Fragment Navigation Button Engaged",
+                                                    displayName
+                                                )
                                                 SmoothScrollUtils.scrollToId(id);
                                             }}>
                                             <FontAwesomeIcon icon={faIcon} />

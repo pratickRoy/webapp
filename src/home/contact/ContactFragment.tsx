@@ -198,24 +198,28 @@ export default class ContactFragment extends React.Component<ContactFragmentProp
                 </div>
                 <div id={"prw-home-page-contact-fragment-social-media-buttons"}  className={activatedDeactivatedClass}>
                     <a href={"https://www.linkedin.com/in/pratickroy/"}
+                       onClick={() => { GAevent("ContactFragment", "Social Media Button Engaged", "Linkedin") }}
                        className={"prw-home-page-projects-social-media-button"}
                        target={"_blank"}>
 
                         <FontAwesomeIcon icon={faLinkedin} />
                     </a>
                     <a href={"https://www.facebook.com/Roy.online"}
+                       onClick={() => { GAevent("ContactFragment", "Social Media Button Engaged", "Facebook") }}
                        className={"prw-home-page-projects-social-media-button"}
                        target={"_blank"}>
 
                         <FontAwesomeIcon icon={faFacebook} />
                     </a>
                     <a href={"https://mobile.twitter.com/sudo_pratickroy"}
+                       onClick={() => { GAevent("ContactFragment", "Social Media Button Engaged", "twitter") }}
                        className={"prw-home-page-projects-social-media-button"}
                        target={"_blank"}>
 
                         <FontAwesomeIcon icon={faTwitter} />
                     </a>
                     <a href={"mailto:roypratick.1@gmail.com"}
+                       onClick={() => { GAevent("ContactFragment", "Social Media Button Engaged", "Email") }}
                        className={"prw-home-page-projects-social-media-button"}
                        target={"_blank"}>
 
@@ -231,6 +235,8 @@ export default class ContactFragment extends React.Component<ContactFragmentProp
     }
 
     private handleSubmit(event: React.FormEvent) {
+
+        GAevent("ContactFragment", "Message Submitted");
 
         event.preventDefault();
 
@@ -252,12 +258,14 @@ export default class ContactFragment extends React.Component<ContactFragmentProp
             'user_yXYdo0mmf1coiUy8CwR9B'
         ).then((response) => {
             this.setState({ showProgress: false })
+            GAevent("ContactFragment", "Message Sent Successfully");
             toast.success(<p>Message Sent Successfully!</p>,
                 ContactFragment.CONTACT_FRAGMENT_TOAST_OPTIONS
             );
             this.resetForm()
         }, (error) => {
             setTimeout(() => {
+                GAevent("ContactFragment", "Error Sending Message", JSON.stringify(error));
                 this.setState({ showProgress: false })
                 toast.error(<p>Failed to send message. Please Try again after some time.</p>,
                     ContactFragment.CONTACT_FRAGMENT_TOAST_OPTIONS

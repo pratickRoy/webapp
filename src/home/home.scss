@@ -69,6 +69,14 @@
         transition: all ease-in-out 0.2s;
         @extend .prw-btn-dark;
 
+        height: 32px;
+        @include xxsh() {
+          height: 40px;
+        }
+        @include xsh() {
+          height: 48px;
+        }
+
         --button-small-width: 98%;
         margin-left: 1%;
         margin-right: 1%;

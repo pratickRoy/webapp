@@ -146,7 +146,7 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
                 <div id={"prw-home-page-posts-fragment-posts"} className={activatedDeactivatedClass}>
 
                     {this.buildCardListItem(
-                        "https://towardsdatascience.com/are-void-methods-bad-6d67dedc6600",
+                        "https://towardsdatascience.com/are-void-methods-bad-6d67dedc6600?source=friends_link&sk=23ac126c1b359cc407a07b1908c8daf3",
                         AreVoidMethodsBadFeatureImage,
                         "A Void Method can be expressed by the formula : F(x) = Nothing :)",
                         "Are Void Methods bad?",
@@ -154,7 +154,7 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
                         "A deep-dive into the nature of void methods and the associated side-effects. Why you should broadly avoid them. And the cases when you shouldn't."
                     )}
                     {this.buildCardListItem(
-                        "https://medium.com/pratickroy/ray-vs-ethics-part-i-97103758b596",
+                        "https://medium.com/pratickroy/ray-vs-ethics-part-i-97103758b596?source=friends_link&sk=aa4a2dafba55f25150bb42256bfac5e3",
                         "https://miro.medium.com/max/1400/1*4IFIVHJApjLFznJo3KsNZA.jpeg",
                         "Satyajit Ray on a 1994 stamp of India",
                         "Ray vs Ethics",
@@ -162,7 +162,7 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
                         "A deep-dive into Satyajit Ray’s filmography, in an attempt to confront his arch-nemesis — the ethics question."
                     )}
                     {this.buildCardListItem(
-                        "https://towardsdatascience.com/what-is-good-code-an-actionable-introduction-1cad30551ad4",
+                        "https://towardsdatascience.com/what-is-good-code-an-actionable-introduction-1cad30551ad4?source=friends_link&sk=5eaf417af41f908a82d03791c51dac32",
                         WhatIsGoodCodeFeatureImage,
                         "CODE YOUR CUSTOMER. CODE YOUR DESIGN. DON'T SURPRISE ME.",
                         "What Is Good code?",
@@ -170,7 +170,7 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
                         "A Deep Dive of Clean Code Principles; Highlighting the value of readability in a multi authored, large & complex project whose end customer is a human."
                     )}
                     {this.buildCardListItem(
-                        "https://medium.com/the-double-slit/deriving-integral-calculus-the-geometric-way-e631d9aaffc6",
+                        "https://medium.com/the-double-slit/deriving-integral-calculus-the-geometric-way-e631d9aaffc6?source=friends_link&sk=b443854834af0df6f1cbfc96cd12d953",
                         "https://miro.medium.com/max/1400/1*i5B0gKAoqjwWIzxHjWME9w.jpeg",
                         "The Principia Mathematica",
                         "Deriving Integral Calculus",
@@ -178,7 +178,7 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
                         "Using simple english & geometry to prove integration formulas."
                     )}
                     {this.buildCardListItem(
-                        "https://medium.com/saint-ajay/open-letter-to-preludes-by-iceman-newton-af99ad90b711",
+                        "https://medium.com/saint-ajay/open-letter-to-preludes-by-iceman-newton-af99ad90b711?source=friends_link&sk=e3b75425cc496d61427011d8f3e6dad8",
                         "https://miro.medium.com/max/1400/0*L2F4r0jbMe9xWCsf",
                         "Sparrows on the barbed wires",
                         "Open Letter",

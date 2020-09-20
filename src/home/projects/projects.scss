@@ -92,7 +92,8 @@
             display: flex;
             flex-direction: column;
             border-radius: 1rem;
-            padding: 1.5rem;
+            padding: 0.5rem;
+            @include xsh() { padding: 1.5rem; }
             transition-timing-function: ease;
             border: 4px solid transparent;
             box-shadow: 0 0 0 1px #3c3c3c, 0 0 0 2px#000;
@@ -148,20 +149,27 @@
                 border: 4px solid transparent;
                 box-shadow: 0 0 0 1px #3c3c3c, 0 0 0 2px#000;
                 word-break: keep-all;
-                padding-top: 10px;
+                flex-wrap: wrap;
 
                 img {
-                    margin-top: auto;
                     width: 30%;
                     @include xsh() { width: 50% }
+                    max-height: 100%;
+                }
+
+                div {
+                    display: flex;
+                    width: calc(100% - 4rem);
+                    flex-direction: column;
+                    align-items: center;
                 }
 
                 .prw-home-page-projects-fragment-project-tags {
 
                     display: flex;
+                    flex-direction: row;
                     width: 100%;
                     margin-top: auto;
-                    margin-bottom: 10%;
 
                     .prw-home-page-projects-fragment-project-tag {
                         flex: 1;

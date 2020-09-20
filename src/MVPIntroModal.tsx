@@ -53,6 +53,10 @@ export default class MVPIntroModal extends React.Component<MVPIntroModalProps, M
                         for a tic tac toe game (long story!). So while construction finishes, play a round!
                         If you want to know the long story, play the video. (Fair Warning - It could be boring.)
                         If it's boring, skip over to the game!
+                        <br/>
+                        <br/>
+                        P.S. This is no longer accurate, as the main website is ready. Keeping this as is for
+                        archival purposes. Will clean up soon!
                     </div>
                     <ReactPlayer
                         url='https://youtu.be/T44vtrva414'

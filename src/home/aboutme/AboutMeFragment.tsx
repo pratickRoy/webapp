@@ -90,15 +90,32 @@ export default class AboutMe extends React.Component<AboutMeProps, AboutMeState>
             GApageView("home/aboutme");
         }
 
+        if (prevState.visibleCardKey !== this.state.visibleCardKey) {
+
+            let card : string = "Unknown"
+            switch (this.state.visibleCardKey) {
+                case 0: card = "Me the Human."; break;
+                case 1: card = "Me the Developer."; break;
+                case 2: card = "Work Ex."; break;
+            }
+
+            GAevent(
+                "AboutMeFragment",
+                "AboutMe Card Engaged",
+                card
+            )
+        }
+
         if (this.props.isFragmentActive) {
 
             if (!this.state.isFragmentActivated) {
+                GAevent("AboutMeFragment", "AboutMe Card Engaged", "Me the Human.")
                 GAevent("AboutMeFragment", "Activated Fragment")
                 toast.dark(<p>
                     To move the cards, use the buttons or
                     press the &#8592; and &#8594; keys
                     and (only if you are a gamer)
-                    the A & D keys work as well :)"</p>, AboutMe.ABOUT_ME_TOAST_OPTIONS);
+                    the A & D keys work as well :)</p>, AboutMe.ABOUT_ME_TOAST_OPTIONS);
                 this.setState({isFragmentActivated : true})
                 return
             }
@@ -236,6 +253,12 @@ export default class AboutMe extends React.Component<AboutMeProps, AboutMeState>
                                             <TimelineSeparator>
                                                 <a
                                                     className={"resume-btn"}
+                                                    onClick={() => {
+                                                        GAevent(
+                                                            "AboutMeFragment",
+                                                            "View Full Resume Button Engaged"
+                                                        )
+                                                    }}
                                                     href="https://drive.google.com/file/d/11mQdCVA1H39n5su4rjRmBcrF9DnOOAzy/view?usp=sharing"
                                                     target="_blank">
 
@@ -317,7 +340,7 @@ export default class AboutMe extends React.Component<AboutMeProps, AboutMeState>
                                                 </Typography>
                                             </TimelineOppositeContent>
                                             <TimelineSeparator>
-                                                <TimelineDot color="grey">
+                                                <TimelineDot color="grey" style={{color: "black"}}>
                                                     <FontAwesomeIcon icon={faAmazon} />
                                                 </TimelineDot>
                                                 <TimelineConnector />
