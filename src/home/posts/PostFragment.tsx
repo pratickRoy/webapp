@@ -9,6 +9,7 @@ import {AwesomeButton} from "react-awesome-button";
 import {GAevent, GApageView} from "../../index";
 import {toast} from "react-toastify";
 import {ToastOptions} from "react-toastify/dist/types";
+import ToastUtils from "../../utils/ToastUtils";
 
 interface PostFragmentProps {
     postFragmentId : string
@@ -33,6 +34,9 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
         pauseOnFocusLoss: true,
         draggable: true,
         pauseOnHover: true,
+    }
+    private static readonly POST_TOAST_ID = {
+        REDIRECTION : "post-fragment-redirection-toast"
     }
 
     static defaultProps = {
@@ -62,6 +66,9 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
             //window.history.replaceState("object or string", "", "/home/post");
             GApageView("home/post");
         }
+        if (prevProps.isFragmentActive && !this.props.isFragmentActive) {
+            toast.dismiss(PostFragment.POST_TOAST_ID.REDIRECTION);
+        }
 
         if (this.props.isFragmentActive) {
             if (!this.state.isFragmentActivated) {
@@ -69,9 +76,19 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
                 this.setState({isFragmentActivated: true})
                 this.updatePostWidth();
                 const title = new URLSearchParams(window.location.search).get("blogTitle")
-                const post = $("[data-name='" + title + "']")
 
-                if (window.location.pathname.includes("weblog") && post) {
+
+                let post = $("[data-name='" + title + "']")
+                if (!post[0]) {
+                    post = $("[data-id='" + title + "']")
+                    if (!post[0]) {
+                        post = $("[data-title='" + title + "']")
+                    }
+                }
+                console.log(title)
+                console.log(post[0])
+
+                if (window.location.pathname.includes("weblog") && post[0]) {
 
                     GAevent("PostFragment", "Referred Post", title)
                     this.setState({isPostReferred : true});
@@ -91,10 +108,14 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
                                 }
 
                             } as ToastOptions,
-                            PostFragment.POST_TOAST_OPTIONS
+                            ToastUtils.buildToastOptions(
+                                PostFragment.POST_TOAST_OPTIONS,
+                                PostFragment.POST_TOAST_ID.REDIRECTION
+                            )
                         )
                     );
                     setTimeout(() => {
+                        console.log(post[0])
                         $("#prw-home-page-posts-fragment-posts").animate(
                             {scrollLeft: post.offset()!.left - 10},
                             'slow'
@@ -149,6 +170,7 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
                         "https://towardsdatascience.com/are-void-methods-bad-6d67dedc6600?source=friends_link&sk=23ac126c1b359cc407a07b1908c8daf3",
                         AreVoidMethodsBadFeatureImage,
                         "A Void Method can be expressed by the formula : F(x) = Nothing :)",
+                        "21162d1e-dd01-4891-80bf-5428b89acf19",
                         "Are Void Methods bad?",
                         "Why to avoid them, and also when not to.",
                         "A deep-dive into the nature of void methods and the associated side-effects. Why you should broadly avoid them. And the cases when you shouldn't."
@@ -157,6 +179,7 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
                         "https://medium.com/pratickroy/ray-vs-ethics-part-i-97103758b596?source=friends_link&sk=aa4a2dafba55f25150bb42256bfac5e3",
                         "https://miro.medium.com/max/1400/1*4IFIVHJApjLFznJo3KsNZA.jpeg",
                         "Satyajit Ray on a 1994 stamp of India",
+                        "e4519e6a-cea2-48a9-9159-6d20336fbe9d",
                         "Ray vs Ethics",
                         "Part I",
                         "A deep-dive into Satyajit Ray’s filmography, in an attempt to confront his arch-nemesis — the ethics question."
@@ -165,6 +188,7 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
                         "https://towardsdatascience.com/what-is-good-code-an-actionable-introduction-1cad30551ad4?source=friends_link&sk=5eaf417af41f908a82d03791c51dac32",
                         WhatIsGoodCodeFeatureImage,
                         "CODE YOUR CUSTOMER. CODE YOUR DESIGN. DON'T SURPRISE ME.",
+                        "d82e9a14-cd77-460a-a72f-5c9af1043498",
                         "What Is Good code?",
                         "A 10-minute actionable introduction.",
                         "A Deep Dive of Clean Code Principles; Highlighting the value of readability in a multi authored, large & complex project whose end customer is a human."
@@ -173,6 +197,7 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
                         "https://medium.com/the-double-slit/deriving-integral-calculus-the-geometric-way-e631d9aaffc6?source=friends_link&sk=b443854834af0df6f1cbfc96cd12d953",
                         "https://miro.medium.com/max/1400/1*i5B0gKAoqjwWIzxHjWME9w.jpeg",
                         "The Principia Mathematica",
+                        "af07b516-5cdd-4b19-8b08-748c5a46eba0",
                         "Deriving Integral Calculus",
                         "The Geometric Way.",
                         "Using simple english & geometry to prove integration formulas."
@@ -181,6 +206,7 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
                         "https://medium.com/saint-ajay/open-letter-to-preludes-by-iceman-newton-af99ad90b711?source=friends_link&sk=e3b75425cc496d61427011d8f3e6dad8",
                         "https://miro.medium.com/max/1400/0*L2F4r0jbMe9xWCsf",
                         "Sparrows on the barbed wires",
+                        "1c2f3add-4501-4f8f-8092-314a3592b2ba",
                         "Open Letter",
                         "A Preludes critique",
                         "Preludes. A poem on modern urban life's monotony, harpooned my then 17 year old mind. Now Iceman Newton replies to the palpable ubiquitous elitism therein.."
@@ -202,6 +228,7 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
     buildCardListItem(url : string,
                       featureImageId : string,
                       featureImageAlt : string,
+                      postId : string,
                       postTitle : string,
                       postSubtitle : string,
                       postDesc : string) {
@@ -218,6 +245,8 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
             <li>
                 <Card
                     data-name={postTitle + " | " + postSubtitle}
+                    data-id={postId}
+                    data-title={postTitle}
                     data-url={url}
                     className={"prw-home-page-posts-fragment-post " + activatedDeactivatedClass}
                     style={isPostReferredStyle}

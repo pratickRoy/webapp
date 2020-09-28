@@ -13,6 +13,7 @@ import {faFacebook, faGithubAlt, faLinkedin, faTwitter} from "@fortawesome/free-
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEnvelope} from "@fortawesome/free-solid-svg-icons";
 import {GAevent, GApageView} from "../../index";
+import ToastUtils from "../../utils/ToastUtils";
 
 interface ContactFragmentProps {
     contactFragmentId : string
@@ -41,6 +42,10 @@ export default class ContactFragment extends React.Component<ContactFragmentProp
         draggable: true,
         pauseOnHover: true
     }
+    private static readonly CONTACT_TOAST_ID = {
+        MESSAGE_SUCCESS : "contact-fragment-browser-message-send-success-toast",
+        MESSAGE_ERROR : "contact-fragment-browser-message-send-error-toast"
+    }
 
     static defaultProps = {
         aboutMeFragmentId : ContactFragment.DEFAULT_CONTACT_FRAGMENT_ID
@@ -63,6 +68,10 @@ export default class ContactFragment extends React.Component<ContactFragmentProp
 
         if (!prevProps.isFragmentActive && this.props.isFragmentActive) {
             GApageView("home/contact");
+        }
+        if (prevProps.isFragmentActive && !this.props.isFragmentActive) {
+            toast.dismiss(ContactFragment.CONTACT_TOAST_ID.MESSAGE_SUCCESS);
+            toast.dismiss(ContactFragment.CONTACT_TOAST_ID.MESSAGE_ERROR);
         }
 
         if (this.props.isFragmentActive) {
@@ -260,7 +269,10 @@ export default class ContactFragment extends React.Component<ContactFragmentProp
             this.setState({ showProgress: false })
             GAevent("ContactFragment", "Message Sent Successfully");
             toast.success(<p>Message Sent Successfully!</p>,
-                ContactFragment.CONTACT_FRAGMENT_TOAST_OPTIONS
+                ToastUtils.buildToastOptions(
+                    ContactFragment.CONTACT_FRAGMENT_TOAST_OPTIONS,
+                    ContactFragment.CONTACT_TOAST_ID.MESSAGE_SUCCESS
+                )
             );
             this.resetForm()
         }, (error) => {
@@ -268,7 +280,10 @@ export default class ContactFragment extends React.Component<ContactFragmentProp
                 GAevent("ContactFragment", "Error Sending Message", JSON.stringify(error));
                 this.setState({ showProgress: false })
                 toast.error(<p>Failed to send message. Please Try again after some time.</p>,
-                    ContactFragment.CONTACT_FRAGMENT_TOAST_OPTIONS
+                    ToastUtils.buildToastOptions(
+                        ContactFragment.CONTACT_FRAGMENT_TOAST_OPTIONS,
+                        ContactFragment.CONTACT_TOAST_ID.MESSAGE_ERROR
+                    )
                 );
             }, 500)
 

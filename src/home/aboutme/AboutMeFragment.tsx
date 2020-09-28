@@ -36,6 +36,7 @@ import {Nav} from "react-bootstrap";
 import {white} from "material-ui/styles/colors";
 import {ToastOptions} from "react-toastify/dist/types";
 import {GAevent, GApageView} from "../../index";
+import ToastUtils from "../../utils/ToastUtils";
 
 
 interface AboutMeProps {
@@ -63,6 +64,9 @@ export default class AboutMe extends React.Component<AboutMeProps, AboutMeState>
         draggable: true,
         pauseOnHover: true
     }
+    private static readonly ABOUT_ME_TOAST_ID = {
+        NAVIGATION : "about-me-fragment-navigation-toast"
+    }
 
     static defaultProps = {
         aboutMeFragmentId : AboutMe.DEFAULT_ABOUT_ME_FRAGMENT_ID
@@ -88,6 +92,9 @@ export default class AboutMe extends React.Component<AboutMeProps, AboutMeState>
 
         if (!prevProps.isFragmentActive && this.props.isFragmentActive) {
             GApageView("home/aboutme");
+        }
+        if (prevProps.isFragmentActive && !this.props.isFragmentActive) {
+            toast.dismiss(AboutMe.ABOUT_ME_TOAST_ID.NAVIGATION);
         }
 
         if (prevState.visibleCardKey !== this.state.visibleCardKey) {
@@ -115,7 +122,12 @@ export default class AboutMe extends React.Component<AboutMeProps, AboutMeState>
                     To move the cards, use the buttons or
                     press the &#8592; and &#8594; keys
                     and (only if you are a gamer)
-                    the A & D keys work as well :)</p>, AboutMe.ABOUT_ME_TOAST_OPTIONS);
+                    the A & D keys work as well :)</p>,
+                    ToastUtils.buildToastOptions(
+                        AboutMe.ABOUT_ME_TOAST_OPTIONS,
+                        AboutMe.ABOUT_ME_TOAST_ID.NAVIGATION
+                    )
+                );
                 this.setState({isFragmentActivated : true})
                 return
             }

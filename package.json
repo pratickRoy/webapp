@@ -1,5 +1,5 @@
 {
-  "homepage": "http://pratickroy.github.io/home",
+  "homepage": "http://pratickroy.github.io/",
   "name": "pratick-roy-website",
   "version": "0.1.0",
   "private": true,
@@ -37,6 +37,7 @@
     "emailjs": "^3.3.0",
     "emailjs-com": "^2.6.3",
     "hashset": "0.0.6",
+    "http-server": "^0.12.3",
     "jquery": "^3.5.1",
     "jquery.scrollto": "^2.1.2",
     "node-sass": "^4.14.1",

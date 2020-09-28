@@ -14,6 +14,12 @@ import ReactResizeDetector from "react-resize-detector";
 import ReactTooltip from "react-tooltip";
 import {GAevent, GApageView} from "../../index";
 import LandingFragmentDisplayImage from "./assets/landing-fragment-display-image.jpg"
+import {faChrome} from "@fortawesome/free-brands-svg-icons";
+import {ToastOptions} from "react-toastify/dist/types";
+import {toast} from "react-toastify";
+import MVPIntroModal from "../../MVPIntroModal";
+import LandingFragmentStoryModal from "./LandingFragmentStoryModal";
+import ToastUtils from "../../utils/ToastUtils";
 
 interface LandingFragmentProps {
     landingFragmentId : string
@@ -23,13 +29,29 @@ interface LandingFragmentProps {
 
 interface LandingFragmentState {
     height? : string
-    isFragmentActivated : boolean
+    isFragmentActivated : boolean,
+    showStoryModal : boolean
 }
 
 export default class LandingFragment extends React.Component<LandingFragmentProps, LandingFragmentState> {
 
     private static DEFAULT_LANDING_FRAGMENT_ID = "prw-landing-fragment";
     private static ON_LOAD_ANIMATION_TIME_DURATION_IN_MILLIS = 6000;
+    private static readonly LANDING_TOAST_OPTIONS : ToastOptions = {
+        className: "prw-toast",
+        position: "top-center",
+        autoClose: 10000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        rtl: false,
+        pauseOnFocusLoss: true,
+        draggable: true,
+        pauseOnHover: true
+    }
+    private static readonly LANDING_TOAST_ID = {
+        BROWSER_COMPATIBILITY : "landing-fragment-browser-compatibility-toast",
+        WEBSITE_STORY : "landing-fragment-website-story-toast"
+    }
 
     static defaultProps = {
         landingFragmentId: LandingFragment.DEFAULT_LANDING_FRAGMENT_ID,
@@ -39,6 +61,7 @@ export default class LandingFragment extends React.Component<LandingFragmentProp
         super(props);
         this.state = {
             isFragmentActivated : false,
+            showStoryModal : false,
         }
     }
 
@@ -50,6 +73,10 @@ export default class LandingFragment extends React.Component<LandingFragmentProp
 
         if (!prevProps.isFragmentActive && this.props.isFragmentActive) {
             GApageView("home/landing");
+        }
+        if (prevProps.isFragmentActive && !this.props.isFragmentActive) {
+            toast.dismiss(LandingFragment.LANDING_TOAST_ID.BROWSER_COMPATIBILITY);
+            toast.dismiss(LandingFragment.LANDING_TOAST_ID.WEBSITE_STORY);
         }
 
         if (this.props.isFragmentActive) {
@@ -63,6 +90,26 @@ export default class LandingFragment extends React.Component<LandingFragmentProp
                     () => {
                         enableBodyScroll(fragment);
                         $(".prw-landing-fragment").css('pointer-events', 'auto');
+                        toast.error(
+                            <p>
+                                As of now, I have only tested this website in Chrome.
+                                <b> If possible please use chrome. </b>
+                                I Will make it compatible with other browsers in the future.
+                            </p>,
+                            ToastUtils.buildToastOptions(
+                                LandingFragment.LANDING_TOAST_OPTIONS,
+                                LandingFragment.LANDING_TOAST_ID.BROWSER_COMPATIBILITY
+                            )
+                        );
+                        toast.dark(
+                            <p>
+                                Want to see the Story behind the Website? Click on the DP :)
+                            </p>,
+                            ToastUtils.buildToastOptions(
+                                LandingFragment.LANDING_TOAST_OPTIONS,
+                                LandingFragment.LANDING_TOAST_ID.WEBSITE_STORY
+                            )
+                        );
                     },
                     LandingFragment.ON_LOAD_ANIMATION_TIME_DURATION_IN_MILLIS
                 );
@@ -108,6 +155,14 @@ export default class LandingFragment extends React.Component<LandingFragmentProp
                                     <img
                                         id={"prw-landing-fragment-content-display-image"}
                                         src={LandingFragmentDisplayImage}
+                                        onClick={() => {
+                                            toast.dismiss(LandingFragment.LANDING_TOAST_ID.BROWSER_COMPATIBILITY);
+                                            toast.dismiss(LandingFragment.LANDING_TOAST_ID.WEBSITE_STORY);
+                                            disableBodyScroll(document.querySelector(this.props.landingFragmentId)!);
+                                            this.setState({
+                                                showStoryModal : true}
+                                            )}
+                                        }
                                     />
                                     <div className="prw-landing-fragment-content-display-image-pulse"/>
                                     <div className="prw-landing-fragment-content-display-image-pulse"/>
@@ -168,6 +223,15 @@ export default class LandingFragment extends React.Component<LandingFragmentProp
                         );
                     }}
                 </ReactResizeDetector>
+                <LandingFragmentStoryModal
+                    showModal={this.state.showStoryModal}
+                    notifyIntroCompleted={() => {
+                        setTimeout(() => {
+                            enableBodyScroll(document.querySelector(this.props.landingFragmentId)!)
+                        }, 2000);
+                        this.setState({showStoryModal: false}) }
+                    }
+                />
             </div>)
             : (<div id={this.props.landingFragmentId}
                     className={"prw-landing-fragment"}

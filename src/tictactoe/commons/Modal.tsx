@@ -32,6 +32,7 @@ export default class Modal extends React.Component<ModalProps, ModalState> {
 
     render() {
 
+        this.modalElement.className = CssHelper.getCssClassName(this.props.modalStyleClasses)
         return createPortal( this.props.children, this.modalElement );
     }
 }

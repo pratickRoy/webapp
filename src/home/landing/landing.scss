@@ -68,8 +68,16 @@
             @extend .fade-in-animate-with-delay;
             z-index: 100;
             border-radius: 50%;
-            background-color: black;
             width: 20%;
+            border: 4px solid #2E89FF;
+            transition: box-shadow 0.3s linear;
+
+            padding: 4px;
+            cursor: pointer;
+
+            &:hover {
+                box-shadow: 0 0 10px 4px #2E89FF;
+            }
 
             max-width: 75px;
             @include xxs {
@@ -170,5 +178,90 @@
     to {
         transform: scale(10, 10);
         opacity: .05;
+    }
+}
+
+// Modal
+
+.prw-landing-fragment-story-modal {
+    background: rgba(255,255,255,0.50);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+
+
+    &.deactivated {
+        z-index: -100;
+        opacity: 0;
+        transition: all 1s 1s;
+    }
+
+    &.activated {
+        z-index: 200;
+        opacity: 1;
+        transition: all 1s;
+    }
+}
+
+.prw-landing-fragment-story-modal-content {
+    margin: auto;
+    min-width: 224px;
+    box-shadow: 0 0 1px 1px #3c3c3c, 0 0 2px 2px #000;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    border: black 1px solid;
+    align-items: center;
+    background: #2c2c2c;
+    color: #ffffff;
+    overflow: hidden;
+    transform: translateY(5px);
+
+
+    &.deactivated {
+        transform: translateX(-150vh);
+        opacity: 0;
+        transition: all 1s;
+    }
+
+    &.activated {
+        transform: translateY(0);
+        opacity: 1;
+        transition: all 1s 1s;
+    }
+
+    .prw-landing-fragment-story-modal-close-wrapper {
+
+        position: fixed;
+        display: flex;
+        width: 100%;
+
+        .prw-landing-fragment-story-modal-close {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
+            margin-left: auto;
+            color: white;
+            background-color: #1E242C;
+            border: 3px solid white;
+            transition: all 0.2s linear;
+            padding: 2px;
+            cursor: pointer;
+            text-decoration: none;
+
+
+            &:hover {
+                color: #1E242C;
+                background-color: white;
+                border: 3px solid white;
+                border-radius: 100%;
+            }
+        }
     }
 }
