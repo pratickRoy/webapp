@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/static/css/main.bb0ea9f7.chunk.css",
-    "main.js": "/static/js/main.3a76a199.chunk.js",
-    "runtime-main.js": "/static/js/runtime-main.91b7d7c2.js",
-    "static/css/2.375b92aa.chunk.css": "/static/css/2.375b92aa.chunk.css",
-    "static/js/2.1b6ab191.chunk.js": "/static/js/2.1b6ab191.chunk.js",
-    "index.html": "/index.html",
-    "precache-manifest.fc34d6fc83e830747f9871843b1b380b.js": "/precache-manifest.fc34d6fc83e830747f9871843b1b380b.js",
-    "service-worker.js": "/service-worker.js",
-    "static/js/2.1b6ab191.chunk.js.LICENSE.txt": "/static/js/2.1b6ab191.chunk.js.LICENSE.txt",
-    "static/media/are-void-methods-bad-feature-image.png": "/static/media/are-void-methods-bad-feature-image.77b1587d.png",
-    "static/media/dots-feature-image.png": "/static/media/dots-feature-image.9c271fad.png",
-    "static/media/landing.scss": "/static/media/landing-fragment-background-image.ddf01aa6.jpg",
-    "static/media/landing-fragment-display-image.jpg": "/static/media/landing-fragment-display-image.707345ef.jpg",
-    "static/media/ml-feature-image.png": "/static/media/ml-feature-image.7c85f7ac.png",
-    "static/media/tictactoe-feature-image.png": "/static/media/tictactoe-feature-image.aca0b6ae.png",
-    "static/media/what-is-good-code-feature-image.png": "/static/media/what-is-good-code-feature-image.8a3e30da.png"
+    "main.css": "/webapp/static/css/main.6c445d09.chunk.css",
+    "main.js": "/webapp/static/js/main.3a76a199.chunk.js",
+    "runtime-main.js": "/webapp/static/js/runtime-main.f91bfdd2.js",
+    "static/css/2.375b92aa.chunk.css": "/webapp/static/css/2.375b92aa.chunk.css",
+    "static/js/2.1b6ab191.chunk.js": "/webapp/static/js/2.1b6ab191.chunk.js",
+    "index.html": "/webapp/index.html",
+    "precache-manifest.afe06a28bdbde1e20f7b066fcdbbb0f2.js": "/webapp/precache-manifest.afe06a28bdbde1e20f7b066fcdbbb0f2.js",
+    "service-worker.js": "/webapp/service-worker.js",
+    "static/js/2.1b6ab191.chunk.js.LICENSE.txt": "/webapp/static/js/2.1b6ab191.chunk.js.LICENSE.txt",
+    "static/media/are-void-methods-bad-feature-image.png": "/webapp/static/media/are-void-methods-bad-feature-image.77b1587d.png",
+    "static/media/dots-feature-image.png": "/webapp/static/media/dots-feature-image.9c271fad.png",
+    "static/media/landing.scss": "/webapp/static/media/landing-fragment-background-image.ddf01aa6.jpg",
+    "static/media/landing-fragment-display-image.jpg": "/webapp/static/media/landing-fragment-display-image.707345ef.jpg",
+    "static/media/ml-feature-image.png": "/webapp/static/media/ml-feature-image.7c85f7ac.png",
+    "static/media/tictactoe-feature-image.png": "/webapp/static/media/tictactoe-feature-image.aca0b6ae.png",
+    "static/media/what-is-good-code-feature-image.png": "/webapp/static/media/what-is-good-code-feature-image.8a3e30da.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.91b7d7c2.js",
+    "static/js/runtime-main.f91bfdd2.js",
     "static/css/2.375b92aa.chunk.css",
     "static/js/2.1b6ab191.chunk.js",
-    "static/css/main.bb0ea9f7.chunk.css",
+    "static/css/main.6c445d09.chunk.css",
     "static/js/main.3a76a199.chunk.js"
   ]
 }
