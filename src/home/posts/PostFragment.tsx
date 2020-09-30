@@ -75,8 +75,8 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
                 GAevent("PostFragment", "Activated Fragment")
                 this.setState({isFragmentActivated: true})
                 this.updatePostWidth();
-                const title = new URLSearchParams(window.location.search).get("blogTitle")
-
+                const url = window.location.hash;
+                const title = unescape(url.substring(url.indexOf("blogTitle") + 10))
 
                 let post = $("[data-name='" + title + "']")
                 if (!post[0]) {
@@ -86,7 +86,7 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
                     }
                 }
 
-                if (window.location.pathname.includes("weblog") && post[0]) {
+                if (window.location.hash.includes("weblog") && post[0]) {
 
                     GAevent("PostFragment", "Referred Post", title)
                     this.setState({isPostReferred : true});

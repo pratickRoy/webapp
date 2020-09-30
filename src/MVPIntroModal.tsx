@@ -58,17 +58,17 @@ export default class MVPIntroModal extends React.Component<MVPIntroModalProps, M
                         P.S. This is no longer accurate, as the main website is ready. Keeping this as is for
                         archival purposes. Will clean up soon!
                     </div>
+                    <button
+                        className={"complete-mvp-intro-button"}
+                        onClick={() => {this.props.notifyIntroCompleted()}}>
+                        Skip to Game
+                    </button>
                     <ReactPlayer
                         url='https://youtu.be/T44vtrva414'
                         controls={true}
                         width={this.state.playerWidth}
                         height={this.state.playerHeight}
                     />
-                    <button
-                        className={"complete-mvp-intro-button"}
-                        onClick={() => {this.props.notifyIntroCompleted()}}>
-                        Lets Play Some Tic Tac Toe!
-                    </button>
                 </div>
             </Modal>
         )

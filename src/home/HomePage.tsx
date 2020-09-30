@@ -44,7 +44,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
     componentDidMount() {
         GApageView("home");
 
-        const url = window.location.pathname;
+        const url = window.location.hash;
         if (url.includes("weblog")) {
             this.setupSmoothScrollForFragmentChildren(2);
         } else {

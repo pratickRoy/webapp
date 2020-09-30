@@ -245,7 +245,7 @@ ol, ul {
   right: 0;
   bottom: 0;
   display: flex;
-  overflow-y: auto;
+  overflow-y: hidden;
 }
 
 .ttt-modal-content {
@@ -261,6 +261,8 @@ ol, ul {
   color: $white;
   overflow: hidden;
   transform: translateY(5px);
+  max-height: 85vh;
+  overflow-y: auto;
 }
 
 .ttt-modal-header {

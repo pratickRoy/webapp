@@ -8,6 +8,7 @@ html, body, #root {
 }
 
 .prw-navbar {
+  height: 56px;
   min-width: 224px;
   box-shadow: 0 0 2px 2px rgba(255,255,255,0.5);
 }
@@ -22,6 +23,7 @@ html, body, #root {
 .mvp-intro-content {
   @extend .ttt-modal-content;
   margin: auto;
+  background: $accent-color;
 }
 
 .mvp-intro-desc {
@@ -35,6 +37,8 @@ html, body, #root {
   @extend .ttt-button;
   margin-top: 15px;
   margin-bottom: 15px;
+  border-color: #2c2c2c;
+  background: #3c3c3c;
 }
 
 @import "typography";

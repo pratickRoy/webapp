@@ -209,7 +209,7 @@ export default class ProjectsFragment
                             <div>
                                 <h1><a
                                     onClick={() => { GAevent("ProjectsFragment", "Project Engaged", "T3") }}
-                                    href={"/builds/tictactoe"} target={"_blank"}>T<sup>3</sup></a></h1>
+                                    href={"/webapp/#/builds/tictactoe"} target={"_blank"}>T<sup>3</sup></a></h1>
                                 <div className={"prw-home-page-projects-fragment-project-tags"}>
                                     <FontAwesomeIcon
                                         className={"prw-home-page-projects-fragment-project-tag"}
