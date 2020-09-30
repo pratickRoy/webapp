@@ -11,6 +11,9 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 // @ts-ignore
 import {AwesomeButton} from "react-awesome-button";
 import {faTimes} from "@fortawesome/free-solid-svg-icons";
+import {Fab} from "@material-ui/core";
+import ArrowBackIosSharpIcon from "@material-ui/icons/ArrowBackIosSharp";
+import ArrowForwardIosSharpIcon from "@material-ui/icons/ArrowForwardIosSharp";
 
 interface LandingFragmentStoryModalProps {
     showModal: boolean;
@@ -27,6 +30,7 @@ interface LandingFragmentStoryModalState {
 export default class LandingFragmentStoryModal extends React.Component<LandingFragmentStoryModalProps, LandingFragmentStoryModalState> {
 
     private static defaultHeaderCssClasses : string[] = ["mvp-intro-header"]
+    private storyPlayer: ReactPlayer | null = null;
 
     constructor(props: LandingFragmentStoryModalProps) {
         super(props);
@@ -47,17 +51,16 @@ export default class LandingFragmentStoryModal extends React.Component<LandingFr
 
     render() {
 
-        console.log(this.props.showModal)
         const activatedDeactivatedClass = this.props.showModal
             ? "activated"
             : "deactivated";
-        console.log(activatedDeactivatedClass)
 
         return (
 
             <Modal modalStyleClasses={["prw-landing-fragment-story-modal", activatedDeactivatedClass]}>
                 <div className={"prw-landing-fragment-story-modal-content " + activatedDeactivatedClass}>
                     <ReactPlayer
+                        ref={player => { this.storyPlayer = player }}
                         url='https://www.youtube.com/watch?v=RQ7u64uSsVY&ab_channel=PratickRoy'
                         controls={true}
                         width={this.state.playerWidth}
@@ -73,8 +76,44 @@ export default class LandingFragmentStoryModal extends React.Component<LandingFr
                                 this.setState({storyPlaying: false})
                                 this.props.notifyIntroCompleted()}
                             }>
-                            x
+                            X
                         </a>
+                    </div>
+                    <div id={"prw-landing-fragment-story-modal-jump-controller"}>
+                        <AwesomeButton
+                            disabled={!this.state.storyPlaying}
+                            onPress={() => {
+                                console.log(this.storyPlayer)
+                                console.log("Sup")
+                                this.storyPlayer!.seekTo(0, "seconds")
+                            }}
+                            size="small">
+                            Intro
+                        </AwesomeButton>
+                        <AwesomeButton
+                            disabled={!this.state.storyPlaying}
+                            onPress={() => {this.storyPlayer!.seekTo(72, "seconds")}}
+                            size="small">
+                            The Story I - Context
+                        </AwesomeButton>
+                        <AwesomeButton
+                            disabled={!this.state.storyPlaying}
+                            onPress={() => {this.storyPlayer!.seekTo(238, "seconds")}}
+                            size="small">
+                            The Story II - Problem
+                        </AwesomeButton>
+                        <AwesomeButton
+                            disabled={!this.state.storyPlaying}
+                            onPress={() => {this.storyPlayer!.seekTo(350, "seconds")}}
+                            size="small">
+                            The Story III - Solution
+                        </AwesomeButton>
+                        <AwesomeButton
+                            disabled={!this.state.storyPlaying}
+                            onPress={() => {this.storyPlayer!.seekTo(420, "seconds")}}
+                            size="small">
+                            Outro
+                        </AwesomeButton>
                     </div>
                 </div>
             </Modal>

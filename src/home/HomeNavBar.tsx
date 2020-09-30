@@ -9,6 +9,7 @@ import {AwesomeButton} from "react-awesome-button";
 import {IconDefinition} from "@fortawesome/fontawesome-common-types";
 import HorizontalColorBandDivider from "../components/HorizontalColorBandDivider";
 import {GAevent} from "../index";
+import LandingFragmentDisplayImage from "./landing/assets/landing-fragment-display-image.jpg"
 
 interface HomeNavBarProps {
     showNavigationBar : boolean
@@ -45,7 +46,7 @@ export default class HomeNavBar extends React.Component<HomeNavBarProps, HomeNav
                         <Navbar.Brand href="#">
                             <img
                                 className={"prw-home-navbar-brand-img"}
-                                src={"https://drive.google.com/uc?export=view&id=1qd6_90DZBimSdwkO9ZjLZwYibQEWenbA"}
+                                src={LandingFragmentDisplayImage}
                             />
                             Pratick Roy
                         </Navbar.Brand>

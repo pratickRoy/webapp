@@ -300,7 +300,6 @@ export default class ContactFragment extends React.Component<ContactFragmentProp
 
     private handleChange = (param: any, e: { target: { value: any; }; }) => {
 
-        console.log("xxx")
         // @ts-ignore
         this.setState({ [param]: e.target.value })
         this.validateAllFieldsAreFilled();

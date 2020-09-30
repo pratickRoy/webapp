@@ -85,8 +85,6 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
                         post = $("[data-title='" + title + "']")
                     }
                 }
-                console.log(title)
-                console.log(post[0])
 
                 if (window.location.pathname.includes("weblog") && post[0]) {
 
@@ -115,7 +113,6 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
                         )
                     );
                     setTimeout(() => {
-                        console.log(post[0])
                         $("#prw-home-page-posts-fragment-posts").animate(
                             {scrollLeft: post.offset()!.left - 10},
                             'slow'

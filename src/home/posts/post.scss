@@ -100,7 +100,7 @@ $post-content-height : $post-height - $post-image-height;
             overflow-y: auto;
 
             &.deactivated {
-                transform: translateX(160%);
+                transform: translateX(150vw);
             }
 
             .prw-home-page-posts-fragment-post-content {

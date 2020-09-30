@@ -72,7 +72,6 @@ export default class ProjectsFragment
                 this.updateProjectWidth();
 
                 $(".prw-home-page-projects-fragment-project").on('click mouseenter', (e) => {
-                    console.log("start")
                     const element = $(e.target).closest(".prw-home-page-projects-fragment-project")
                     this.setState({activeProjectKey: parseInt(element[0].dataset.key!)})
                 })
@@ -334,21 +333,18 @@ export default class ProjectsFragment
 
     private showLeftProject() {
 
-        console.log(this.state.activeProjectKey)
         const key = this.state.activeProjectKey ?? 1;
         this.showProject(key == 0 ? 3 : key - 1)
     }
 
     private showRightProject() {
 
-        console.log(this.state.activeProjectKey)
         const key = this.state.activeProjectKey ?? -1;
         this.showProject(key == 3 ? 0 : key + 1)
     }
 
     private showProject(key: number) {
 
-        console.log(key)
         const element = $(".prw-home-page-projects-fragment-project[data-key='" + key + "']");
         element.trigger("click")
         element.find("a").focus()
