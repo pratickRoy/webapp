@@ -4,6 +4,7 @@ import $ from "jquery";
 import {Card, CardActionArea, CardContent, CardHeader, CardMedia} from "@material-ui/core";
 import AreVoidMethodsBadFeatureImage from "./assets/are-void-methods-bad-feature-image.png"
 import WhatIsGoodCodeFeatureImage from "./assets/what-is-good-code-feature-image.png"
+import HowToConvinceAFanBoyFeatureImage from "./assets/how-to-convince-a-fanboy-feature-image.png"
 // @ts-ignore
 import {AwesomeButton} from "react-awesome-button";
 import {GAevent, GApageView} from "../../index";
@@ -164,6 +165,33 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
                 <div id={"prw-home-page-posts-fragment-posts"} className={activatedDeactivatedClass}>
 
                     {this.buildCardListItem(
+                        "https://pratickroy.medium.com/374afcbfbe92?source=friends_link&sk=20d9f17d46f49414010107cc5d7482f2",
+                        "https://cdn-images-1.medium.com/max/800/1*eOoGBj6GxsO55inB9sRb8g.png",
+                        "Mathematically the probability of successfully changing the opinion of someone who has absolute faith in an idea is 0%",
+                        "d73ec7c0-e3df-445d-9f5a-2d10b9a6a5bb",
+                        "Does Youtube Remove Dislikes for Political Videos You Hate?",
+                        "A simple computer science based analysis for dummies and otherwise.",
+                        "If you wan't to get an understanding of why Youtube Likes sometimes looks fishy, here is a simple computer science based analysis for dummies and otherwise"
+                    )}
+                    {this.buildCardListItem(
+                        "https://pratickroy.medium.com/how-to-convince-a-fanboy-29129528b1eb?sk=55298e42c8bb658806f2b89f17b90aa9",
+                        HowToConvinceAFanBoyFeatureImage,
+                        "Mathematically the probability of successfully changing the opinion of someone who has absolute faith in an idea is 0%",
+                        "2d8afd79-539c-444c-bcf2-0c33b7e60f86",
+                        "How to Convince A fanboy?",
+                        "Basic math proves it’s impossible!",
+                        "Ever spent hours debating with people, refuting their ideas with insurmountable facts, only to hear \"Hmm.. But I still believe in (insert idea here)?\" — If so don’t fret. It’s not that you are a bad…"
+                    )}
+                    {this.buildCardListItem(
+                        "https://medium.com/genius-in-a-bottle/a-rude-awakening-cb4ed9852361?sk=a328c4cfcefcfc5c2c560b05c76c18b8",
+                        "https://miro.medium.com/max/1000/0*7VzJX73sVpWmVsx0",
+                        "A path, littered with withered leaves, surrounded by overarching canopies from all sides.",
+                        "60abfe2e-78a2-4577-8e4d-586e685d08f6",
+                        "A Rude Awakening",
+                        "A short story",
+                        "A man meets with an accident. After months, he wakes up in a hospital. He is lucky, living through this ordeal unscathed. But not everything is as it seems."
+                    )}
+                    {this.buildCardListItem(
                         "https://towardsdatascience.com/are-void-methods-bad-6d67dedc6600?source=friends_link&sk=23ac126c1b359cc407a07b1908c8daf3",
                         AreVoidMethodsBadFeatureImage,
                         "A Void Method can be expressed by the formula : F(x) = Nothing :)",
@@ -251,7 +279,6 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
                         GAevent("PostFragment", "Post Engaged", (postTitle + " | " + postSubtitle))
                         window.open(url, "_blank")}
                     }>
-
                     <CardContent className={"prw-home-page-posts-fragment-post-content"}>
                         <CardMedia
                             className={"prw-home-page-posts-fragment-post-image"}

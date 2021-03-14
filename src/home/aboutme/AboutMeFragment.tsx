@@ -16,6 +16,8 @@ import ArrowForwardIosSharpIcon from '@material-ui/icons/ArrowForwardIosSharp';
 import $ from "jquery";
 import {toast, ToastContainer} from "react-toastify";
 import {ReactComponent} from "*.svg";
+import SizzleLabsLogo from "./assets/sizzle-labs-logo.png"
+import TrueSingularityLogo from "./assets/true-singularity-logo.png"
 // @ts-ignore
 import { AwesomeButton } from 'react-awesome-button';
 import Timeline from '@material-ui/lab/Timeline';
@@ -337,7 +339,7 @@ export default class AboutMe extends React.Component<AboutMeProps, AboutMeState>
                                                 <TimelineDot style={{background: "#1A1818"}}>
                                                     <img
                                                         style={{height: "20px"}}
-                                                        src="https://media-exp1.licdn.com/dms/image/C560BAQEuGeAAIZVEww/company-logo_200_200/0?e=1606953600&v=beta&t=2U3HPJp-DJa9i1U78unG7EuhFYvjuU4b7JA5oDgVXz4"/>
+                                                        src={TrueSingularityLogo}/>
                                                 </TimelineDot>
                                                 <TimelineConnector />
                                             </TimelineSeparator>
@@ -371,7 +373,7 @@ export default class AboutMe extends React.Component<AboutMeProps, AboutMeState>
                                                 <TimelineDot style={{background: "#222E35"}}>
                                                     <img
                                                         style={{height: "20px"}}
-                                                        src="https://media-exp1.licdn.com/dms/image/C4D0BAQEUgVZeEpiLDQ/company-logo_200_200/0?e=1606953600&v=beta&t=i5bw0ACiYIcmSnltDpIiRqfAtVnpbaS0eeoFXTpRVGY"/>
+                                                        src={SizzleLabsLogo}/>
                                                 </TimelineDot>
                                                 <TimelineConnector />
                                             </TimelineSeparator>
@@ -389,7 +391,7 @@ export default class AboutMe extends React.Component<AboutMeProps, AboutMeState>
                                                 <TimelineDot style={{background: "#222E35"}}>
                                                     <img
                                                         style={{height: "20px"}}
-                                                        src="https://media-exp1.licdn.com/dms/image/C4D0BAQEUgVZeEpiLDQ/company-logo_200_200/0?e=1606953600&v=beta&t=i5bw0ACiYIcmSnltDpIiRqfAtVnpbaS0eeoFXTpRVGY"/>
+                                                        src={SizzleLabsLogo}/>
                                                 </TimelineDot>
                                             </TimelineSeparator>
                                             <TimelineContent>
