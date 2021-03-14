@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "25462981d39ee3047ae7f59a215e4484",
+    "revision": "b36df1d6a2c13d6720f5f0be7dca8506",
     "url": "/webapp/index.html"
   },
   {
-    "revision": "ed101d7859850072248d",
+    "revision": "b4dc25d87d01d863d815",
     "url": "/webapp/static/css/2.375b92aa.chunk.css"
   },
   {
-    "revision": "210862a301de2f708f8f",
+    "revision": "05462abc1e892df60c7b",
     "url": "/webapp/static/css/main.aa3822fd.chunk.css"
   },
   {
-    "revision": "ed101d7859850072248d",
-    "url": "/webapp/static/js/2.40675260.chunk.js"
+    "revision": "b4dc25d87d01d863d815",
+    "url": "/webapp/static/js/2.55ed3cec.chunk.js"
   },
   {
     "revision": "bc645b8808bddaa3c0c8d72dff721b3b",
-    "url": "/webapp/static/js/2.40675260.chunk.js.LICENSE.txt"
+    "url": "/webapp/static/js/2.55ed3cec.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "210862a301de2f708f8f",
-    "url": "/webapp/static/js/main.6f765998.chunk.js"
+    "revision": "05462abc1e892df60c7b",
+    "url": "/webapp/static/js/main.9bab40dc.chunk.js"
   },
   {
     "revision": "4536633d59aa3e4f59a5",
@@ -36,6 +36,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/webapp/static/media/dots-feature-image.9c271fad.png"
   },
   {
+    "revision": "86d63c5d62238e652e458d994ab1713c",
+    "url": "/webapp/static/media/how-to-convince-a-fanboy-feature-image.86d63c5d.png"
+  },
+  {
     "revision": "ddf01aa63e83f4477ab9beef75933e7d",
     "url": "/webapp/static/media/landing-fragment-background-image.ddf01aa6.jpg"
   },
@@ -46,6 +50,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "7c85f7acf3f462b71277d9b5766ad7e5",
     "url": "/webapp/static/media/ml-feature-image.7c85f7ac.png"
+  },
+  {
+    "revision": "ab4281d1ec01ad14c126f8ee27dbea8c",
+    "url": "/webapp/static/media/sizzle-labs-logo.ab4281d1.png"
   },
   {
     "revision": "aca0b6ae1f7c445d3821e8b1662ec199",

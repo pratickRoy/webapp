@@ -1,27 +1,29 @@
 {
   "files": {
     "main.css": "/webapp/static/css/main.aa3822fd.chunk.css",
-    "main.js": "/webapp/static/js/main.6f765998.chunk.js",
+    "main.js": "/webapp/static/js/main.9bab40dc.chunk.js",
     "runtime-main.js": "/webapp/static/js/runtime-main.f91bfdd2.js",
     "static/css/2.375b92aa.chunk.css": "/webapp/static/css/2.375b92aa.chunk.css",
-    "static/js/2.40675260.chunk.js": "/webapp/static/js/2.40675260.chunk.js",
+    "static/js/2.55ed3cec.chunk.js": "/webapp/static/js/2.55ed3cec.chunk.js",
     "index.html": "/webapp/index.html",
-    "precache-manifest.9357aea19ce6a08ef0f2321750f69d60.js": "/webapp/precache-manifest.9357aea19ce6a08ef0f2321750f69d60.js",
+    "precache-manifest.f1d92730708983c22ad2cbdc327b852d.js": "/webapp/precache-manifest.f1d92730708983c22ad2cbdc327b852d.js",
     "service-worker.js": "/webapp/service-worker.js",
-    "static/js/2.40675260.chunk.js.LICENSE.txt": "/webapp/static/js/2.40675260.chunk.js.LICENSE.txt",
+    "static/js/2.55ed3cec.chunk.js.LICENSE.txt": "/webapp/static/js/2.55ed3cec.chunk.js.LICENSE.txt",
     "static/media/are-void-methods-bad-feature-image.png": "/webapp/static/media/are-void-methods-bad-feature-image.77b1587d.png",
     "static/media/dots-feature-image.png": "/webapp/static/media/dots-feature-image.9c271fad.png",
+    "static/media/how-to-convince-a-fanboy-feature-image.png": "/webapp/static/media/how-to-convince-a-fanboy-feature-image.86d63c5d.png",
     "static/media/landing.scss": "/webapp/static/media/landing-fragment-background-image.ddf01aa6.jpg",
     "static/media/landing-fragment-display-image.jpg": "/webapp/static/media/landing-fragment-display-image.707345ef.jpg",
     "static/media/ml-feature-image.png": "/webapp/static/media/ml-feature-image.7c85f7ac.png",
+    "static/media/sizzle-labs-logo.png": "/webapp/static/media/sizzle-labs-logo.ab4281d1.png",
     "static/media/tictactoe-feature-image.png": "/webapp/static/media/tictactoe-feature-image.aca0b6ae.png",
     "static/media/what-is-good-code-feature-image.png": "/webapp/static/media/what-is-good-code-feature-image.8a3e30da.png"
   },
   "entrypoints": [
     "static/js/runtime-main.f91bfdd2.js",
     "static/css/2.375b92aa.chunk.css",
-    "static/js/2.40675260.chunk.js",
+    "static/js/2.55ed3cec.chunk.js",
     "static/css/main.aa3822fd.chunk.css",
-    "static/js/main.6f765998.chunk.js"
+    "static/js/main.9bab40dc.chunk.js"
   ]
 }
