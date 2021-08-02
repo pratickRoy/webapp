@@ -1,29 +1,27 @@
 {
   "files": {
-    "main.css": "/webapp/static/css/main.aa3822fd.chunk.css",
-    "main.js": "/webapp/static/js/main.9bab40dc.chunk.js",
-    "runtime-main.js": "/webapp/static/js/runtime-main.f91bfdd2.js",
-    "static/css/2.375b92aa.chunk.css": "/webapp/static/css/2.375b92aa.chunk.css",
-    "static/js/2.55ed3cec.chunk.js": "/webapp/static/js/2.55ed3cec.chunk.js",
+    "main.css": "/webapp/static/css/main.ce2fa032.chunk.css",
+    "main.js": "/webapp/static/js/main.6c4fa57b.chunk.js",
+    "runtime-main.js": "/webapp/static/js/runtime-main.f9d78cb6.js",
+    "static/css/2.03f42f2f.chunk.css": "/webapp/static/css/2.03f42f2f.chunk.css",
+    "static/js/2.d5444af4.chunk.js": "/webapp/static/js/2.d5444af4.chunk.js",
     "index.html": "/webapp/index.html",
-    "precache-manifest.f1d92730708983c22ad2cbdc327b852d.js": "/webapp/precache-manifest.f1d92730708983c22ad2cbdc327b852d.js",
-    "service-worker.js": "/webapp/service-worker.js",
-    "static/js/2.55ed3cec.chunk.js.LICENSE.txt": "/webapp/static/js/2.55ed3cec.chunk.js.LICENSE.txt",
-    "static/media/are-void-methods-bad-feature-image.png": "/webapp/static/media/are-void-methods-bad-feature-image.77b1587d.png",
-    "static/media/dots-feature-image.png": "/webapp/static/media/dots-feature-image.9c271fad.png",
-    "static/media/how-to-convince-a-fanboy-feature-image.png": "/webapp/static/media/how-to-convince-a-fanboy-feature-image.86d63c5d.png",
-    "static/media/landing.scss": "/webapp/static/media/landing-fragment-background-image.ddf01aa6.jpg",
-    "static/media/landing-fragment-display-image.jpg": "/webapp/static/media/landing-fragment-display-image.707345ef.jpg",
-    "static/media/ml-feature-image.png": "/webapp/static/media/ml-feature-image.7c85f7ac.png",
-    "static/media/sizzle-labs-logo.png": "/webapp/static/media/sizzle-labs-logo.ab4281d1.png",
-    "static/media/tictactoe-feature-image.png": "/webapp/static/media/tictactoe-feature-image.aca0b6ae.png",
-    "static/media/what-is-good-code-feature-image.png": "/webapp/static/media/what-is-good-code-feature-image.8a3e30da.png"
+    "static/js/2.d5444af4.chunk.js.LICENSE.txt": "/webapp/static/js/2.d5444af4.chunk.js.LICENSE.txt",
+    "static/media/are-void-methods-bad-feature-image.eec105e0.png": "/webapp/static/media/are-void-methods-bad-feature-image.eec105e0.png",
+    "static/media/dots-feature-image.63cf54f3.png": "/webapp/static/media/dots-feature-image.63cf54f3.png",
+    "static/media/how-to-convince-a-fanboy-feature-image.9b494a2d.png": "/webapp/static/media/how-to-convince-a-fanboy-feature-image.9b494a2d.png",
+    "static/media/landing.scss": "/webapp/static/media/landing-fragment-background-image.9f7175a9.jpg",
+    "static/media/landing-fragment-display-image.72a55761.jpg": "/webapp/static/media/landing-fragment-display-image.72a55761.jpg",
+    "static/media/ml-feature-image.a08a6034.png": "/webapp/static/media/ml-feature-image.a08a6034.png",
+    "static/media/sizzle-labs-logo.c73595f6.png": "/webapp/static/media/sizzle-labs-logo.c73595f6.png",
+    "static/media/tictactoe-feature-image.8bfc8eb1.png": "/webapp/static/media/tictactoe-feature-image.8bfc8eb1.png",
+    "static/media/what-is-good-code-feature-image.78597a73.png": "/webapp/static/media/what-is-good-code-feature-image.78597a73.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.f91bfdd2.js",
-    "static/css/2.375b92aa.chunk.css",
-    "static/js/2.55ed3cec.chunk.js",
-    "static/css/main.aa3822fd.chunk.css",
-    "static/js/main.9bab40dc.chunk.js"
+    "static/js/runtime-main.f9d78cb6.js",
+    "static/css/2.03f42f2f.chunk.css",
+    "static/js/2.d5444af4.chunk.js",
+    "static/css/main.ce2fa032.chunk.css",
+    "static/js/main.6c4fa57b.chunk.js"
   ]
 }
