@@ -48,6 +48,11 @@ afford the subscription, can read the medium version. And if you like the conten
 afford it, I would highly encourage you to subscribe and support quality content. And if you can’t afford it, 
 I’ll provide a free variant.
 
+# How to deploy new code
+
+- Do a normal git add & commit
+- run npm run deploy
+
 # Other Sections 
 
 ToDo

@@ -165,6 +165,15 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
                 <div id={"prw-home-page-posts-fragment-posts"} className={activatedDeactivatedClass}>
 
                     {this.buildCardListItem(
+                        "https://towardsdatascience.com/my-google-foobar-journey-2d02e8150158?sk=55333bf57e1a155155964412c2a30014",
+                        "https://miro.medium.com/max/2000/1*ru4V2Nj-3dt93UUO-sP-6g.png",
+                        "FooBar Completion Screenshot",
+                        "f3f65113-4e2d-4654-9949-fffbcd8e6f78",
+                        "My Google Foobar journey",
+                        "A simple computer science based analysis for dummies and otherwise.",
+                        "A Walkthrough my Google Foobar Journey, where I will be sharing my Java solutions for the questions, and the key insights and learnings behind them."
+                    )}
+                    {this.buildCardListItem(
                         "https://pratickroy.medium.com/374afcbfbe92?source=friends_link&sk=20d9f17d46f49414010107cc5d7482f2",
                         "https://cdn-images-1.medium.com/max/800/1*eOoGBj6GxsO55inB9sRb8g.png",
                         "Mathematically the probability of successfully changing the opinion of someone who has absolute faith in an idea is 0%",
