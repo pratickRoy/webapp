@@ -168,9 +168,18 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
                         "https://towardsdatascience.com/my-google-foobar-journey-2d02e8150158?sk=55333bf57e1a155155964412c2a30014",
                         "https://miro.medium.com/max/2000/1*ru4V2Nj-3dt93UUO-sP-6g.png",
                         "FooBar Completion Screenshot",
+                        "47c44bf0-d248-45bb-be22-d8b84f0bf2da",
+                        "My Google Foobar journey",
+                        "Level 2.1 - Elevator Maintenance",
+                        "In this post I deep dive into my solution for Google Foobar Level 2 challenge : Elevator Maintenance, and the clean code lessons that can be drawn from it."
+                    )}
+                    {this.buildCardListItem(
+                        "https://towardsdatascience.com/my-google-foobar-journey-2d02e8150158?sk=55333bf57e1a155155964412c2a30014",
+                        "https://miro.medium.com/max/2000/1*ru4V2Nj-3dt93UUO-sP-6g.png",
+                        "FooBar Completion Screenshot",
                         "f3f65113-4e2d-4654-9949-fffbcd8e6f78",
                         "My Google Foobar journey",
-                        "A simple computer science based analysis for dummies and otherwise.",
+                        "Level 1 - Getting the invitation",
                         "A Walkthrough my Google Foobar Journey, where I will be sharing my Java solutions for the questions, and the key insights and learnings behind them."
                     )}
                     {this.buildCardListItem(
@@ -178,7 +187,7 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
                         "https://cdn-images-1.medium.com/max/800/1*eOoGBj6GxsO55inB9sRb8g.png",
                         "Mathematically the probability of successfully changing the opinion of someone who has absolute faith in an idea is 0%",
                         "d73ec7c0-e3df-445d-9f5a-2d10b9a6a5bb",
-                        "Does Youtube Remove Dislikes for Political Videos You Hate?",
+                        "Does Youtube Remove Dislikes for Political Videos You Hate?",
                         "A simple computer science based analysis for dummies and otherwise.",
                         "If you wan't to get an understanding of why Youtube Likes sometimes looks fishy, here is a simple computer science based analysis for dummies and otherwise"
                     )}
