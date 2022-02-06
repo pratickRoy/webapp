@@ -165,6 +165,15 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
                 <div id={"prw-home-page-posts-fragment-posts"} className={activatedDeactivatedClass}>
 
                     {this.buildCardListItem(
+                        "https://pratickroy.medium.com/managing-ibs-1560f09959c5?sk=99381f403321edb615c21fd04ff309f6",
+                        "https://miro.medium.com/max/700/0*A7ihLLLRVfYry6ef",
+                        "Empty Toilet Paper roll that says : Don't panic",
+                        "70f7827b-7b75-4a69-8605-854a551eee81",
+                        "Managing IBS",
+                        "My fight with Irritable Bowel Syndrome.",
+                        "IBS or Irritable Bowel Syndrome is a disorder of the intestine. 6 years ago, IBS latched on to me and hasn’t let go since. This is my story."
+                    )}
+                    {this.buildCardListItem(
                         "https://towardsdatascience.com/my-google-foobar-journey-2d02e8150158?sk=55333bf57e1a155155964412c2a30014",
                         "https://miro.medium.com/max/2000/1*ru4V2Nj-3dt93UUO-sP-6g.png",
                         "FooBar Completion Screenshot",
