@@ -165,6 +165,15 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
                 <div id={"prw-home-page-posts-fragment-posts"} className={activatedDeactivatedClass}>
 
                     {this.buildCardListItem(
+                        "https://www.aboutamazon.in/news/workplace/what-makes-our-definition-of-mvvmi-the-best-architectural-design-choice-for-android",
+                        "https://assets.aboutamazon.com/dims4/default/ed1730d/2147483647/strip/true/crop/1279x720+0+0/resize/1320x743!/format/webp/quality/90/?url=https%3A%2F%2Famazon-blogs-brightspot.s3.amazonaws.com%2F50%2F82%2F05423c5e4fa7a6e57e93cd958c92%2Fandroid-1280x720.jpg",
+                        "Blog Header Image",
+                        "08b98a2f-c965-44a5-ac04-ce9ba54bf5ed",
+                        "What makes our definition of MVVM(I) the best architectural design choice for android",
+                        "[Published in Amazon Tech Blog]",
+                        "In this post I strongly define MVVM(I) design pattern and highlight why in 80% of all native Android apps, this should be the design pattern of choice."
+                    )}
+                    {this.buildCardListItem(
                         "https://pratickroy.medium.com/managing-ibs-1560f09959c5?sk=99381f403321edb615c21fd04ff309f6",
                         "https://miro.medium.com/max/700/0*A7ihLLLRVfYry6ef",
                         "Empty Toilet Paper roll that says : Don't panic",
