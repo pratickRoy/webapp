@@ -75,7 +75,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
-    "build": "GENERATE_SOURCEMAP=false react-scripts build",
+    "build": "cross-env GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -98,6 +98,7 @@
     "@types/chart.js": "^2.9.27",
     "@types/react-helmet": "^6.1.0",
     "@types/react-resize-detector": "^4.2.0",
+    "cross-env": "^7.0.3",
     "gh-pages": "^3.1.0"
   }
 }
