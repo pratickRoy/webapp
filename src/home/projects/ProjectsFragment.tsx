@@ -1,5 +1,6 @@
 import React from "react";
 import "./projects.scss"
+import MontyHallFeatureImage from "./assets/monty-hall-feature-image.png";
 import TicTacToeFeatureImage from "./assets/tictactoe-feature-image.png";
 import DotsFeatureImage from "./assets/dots-feature-image.png";
 import MLFeatureImage from "./assets/ml-feature-image.png";
@@ -21,6 +22,7 @@ import {Fab} from "@material-ui/core";
 import ArrowBackIosSharpIcon from "@material-ui/icons/ArrowBackIosSharp";
 import ArrowForwardIosSharpIcon from "@material-ui/icons/ArrowForwardIosSharp";
 import {GAevent, GApageView} from "../../index";
+import {IconDefinition} from "@fortawesome/fontawesome-common-types";
 
 interface ProjectsFragmentProps {
     isFragmentActive : boolean,
@@ -172,109 +174,41 @@ export default class ProjectsFragment
                     <h1>My Builds</h1><hr style={{zIndex: -1}}/>
                 </div>
                 <div id={"prw-home-page-projects-fragment-projects"} className={activatedDeactivatedClass}>
-                    <div
-                        className={"prw-home-page-projects-fragment-project " + activatedDeactivatedClass}
-                        key={0}
-                        data-key="0"
-                        onClick={() => {this.xScrollToProject(0)}}>
-
-                        <div className={"prw-home-page-projects-fragment-project-content"}>
-                            <img src={DotsFeatureImage}/>
-                            <div>
-                                <h1><a
-                                    onClick={() => { GAevent("ProjectsFragment", "Project Engaged", "Dots") }}
-                                    href={"https://play.google.com/store/apps/details?id=com.dots.games.pratick.dots"} target={"_blank"}>Dots</a></h1>
-                                <div className={"prw-home-page-projects-fragment-project-tags"}>
-                                    <FontAwesomeIcon
-                                        className={"prw-home-page-projects-fragment-project-tag"}
-                                        icon={faAndroid} />
-                                    <FontAwesomeIcon
-                                        className={"prw-home-page-projects-fragment-project-tag"}
-                                        icon={faJava} />
-                                    <FontAwesomeIcon
-                                        className={"prw-home-page-projects-fragment-project-tag"}
-                                        icon={faGooglePlay} />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        className={"prw-home-page-projects-fragment-project " + activatedDeactivatedClass}
-                        key={1}
-                        data-key="1"
-                        onClick={() => {this.xScrollToProject(1)}}>
-
-                        <div className={"prw-home-page-projects-fragment-project-content"}>
-                            <img src={TicTacToeFeatureImage}/>
-                            <div>
-                                <h1><a
-                                    onClick={() => { GAevent("ProjectsFragment", "Project Engaged", "T3") }}
-                                    href={"/webapp/#/builds/tictactoe"} target={"_blank"}>T<sup>3</sup></a></h1>
-                                <div className={"prw-home-page-projects-fragment-project-tags"}>
-                                    <FontAwesomeIcon
-                                        className={"prw-home-page-projects-fragment-project-tag"}
-                                        icon={faReact} />
-                                    <FontAwesomeIcon
-                                        className={"prw-home-page-projects-fragment-project-tag"}
-                                        icon={faJs} />
-                                    <FontAwesomeIcon
-                                        className={"prw-home-page-projects-fragment-project-tag"}
-                                        icon={faChrome} />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        className={"prw-home-page-projects-fragment-project " + activatedDeactivatedClass}
-                        key={2}
-                        data-key="2"
-                        onClick={() => {this.xScrollToProject(2)}}>
-
-                        <div className={"prw-home-page-projects-fragment-project-content"}>
-                            <img src={MLFeatureImage}/>
-                            <div>
-                                <h1><a
-                                    onClick={() => { GAevent("ProjectsFragment", "Project Engaged", "ML") }}
-                                    href={"https://learning-machine.herokuapp.com/naiveBayes/"} target={"_blank"}>ML</a></h1>
-                                <div className={"prw-home-page-projects-fragment-project-tags"}>
-                                    <FontAwesomeIcon
-                                        className={"prw-home-page-projects-fragment-project-tag"}
-                                        icon={faBrain} />
-                                    <FontAwesomeIcon
-                                        className={"prw-home-page-projects-fragment-project-tag"}
-                                        icon={faPython} />
-                                    <FontAwesomeIcon
-                                        className={"prw-home-page-projects-fragment-project-tag"}
-                                        icon={faChrome} />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        className={"prw-home-page-projects-fragment-project " + activatedDeactivatedClass}
-                        key={3}
-                        data-key="3"
-                        onClick={() => {this.xScrollToProject(3)}}>
-                        <div className={"prw-home-page-projects-fragment-project-content"}>
-                            <img src={GithubFeatureImage}/>
-                            <div>
-                                <h1><a
-                                    onClick={() => { GAevent("ProjectsFragment", "Project Engaged", "Repo") }}
-                                    href={"https://github.com/pratickRoy?tab=repositories"} target={"_blank"}>Repo</a></h1>
-                                <div className={"prw-home-page-projects-fragment-project-tags"}>
-                                    <FontAwesomeIcon
-                                        className={"prw-home-page-projects-fragment-project-tag"}
-                                        icon={faCode} />
-                                    <FontAwesomeIcon
-                                        className={"prw-home-page-projects-fragment-project-tag"}
-                                        icon={faGithubAlt} />
-                                    <FontAwesomeIcon
-                                        className={"prw-home-page-projects-fragment-project-tag"}
-                                        icon={faGitAlt} />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {this.renderProject(
+                        0,
+                        DotsFeatureImage,
+                        "Dots",
+                        "https://play.google.com/store/apps/details?id=com.dots.games.pratick.dots",
+                        [faAndroid, faJava, faGooglePlay]
+                    )}
+                    {this.renderProject(
+                        1,
+                        TicTacToeFeatureImage,
+                        "T3",
+                        "/webapp/#/builds/tictactoe",
+                        [faReact, faJs, faChrome]
+                    )}
+                    {this.renderProject(
+                        2,
+                        MLFeatureImage,
+                        "ML",
+                        "https://learning-machine.herokuapp.com/naiveBayes/",
+                        [faBrain, faPython, faChrome]
+                    )}
+                    {this.renderProject(
+                        3,
+                        MontyHallFeatureImage,
+                        "MontyHall",
+                        "/webapp/#/builds/montyhall",
+                        [faReact, faJs, faChrome]
+                    )}
+                    {this.renderProject(
+                        4,
+                        GithubFeatureImage,
+                        "Repo",
+                        "https://github.com/pratickRoy?tab=repositories",
+                        [faCode, faGithubAlt, faGitAlt]
+                    )}
                 </div>
                 <div id={"prw-home-page-projects-fragment-card-controller"} className={activatedDeactivatedClass}>
                     <Fab
@@ -293,6 +227,48 @@ export default class ProjectsFragment
                         onClick={() => {this.showRightProject()}}>
                         <ArrowForwardIosSharpIcon />
                     </Fab>
+                </div>
+            </div>
+        )
+    }
+
+    renderProject(projectIndex : number,
+                  projectImage : string,
+                  projectName : string,
+                  projectLink : string,
+                  projectTags : IconDefinition[]) : JSX.Element {
+
+        const activatedDeactivatedClass = this.state.isFragmentActivated
+            ? "activated"
+            : "deactivated";
+
+        return (
+            <div
+                className={"prw-home-page-projects-fragment-project " + activatedDeactivatedClass}
+                key={projectIndex}
+                data-key={projectIndex + ""}
+                onClick={() => {this.xScrollToProject(projectIndex)}}>
+
+                <div className={"prw-home-page-projects-fragment-project-content"}>
+                    <div className={"prw-home-page-projects-fragment-project-content-image"}>
+                        <img src={projectImage}/>
+                    </div>
+                    <div className={"prw-home-page-projects-fragment-project-content-title"}>
+                        <a onClick={() => { GAevent("ProjectsFragment", "Project Engaged", projectName) }}
+                           href={projectLink}
+                           target={"_blank"}>{projectName}
+                        </a>
+                    </div>
+                    <div className={"prw-home-page-projects-fragment-project-tags"}>
+                        {projectTags.map((tag) => {
+                            return (
+                                <FontAwesomeIcon
+                                    className={"prw-home-page-projects-fragment-project-tag"}
+                                    icon={tag}
+                                />
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
         )

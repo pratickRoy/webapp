@@ -5,7 +5,7 @@ import SmoothScrollUtils from "../utils/SmoothScrollUtils";
 import _ from "underscore";
 import HomePageFragmentMeta from "./HomePageFragmentMeta";
 import { faCode, faFeatherAlt, faInfo, faPaperPlane, faRocket } from "@fortawesome/free-solid-svg-icons";
-import HomeNavBar from "./HomeNavBar";
+import NavBar from "../NavBar";
 import AboutMe from "./aboutme/AboutMeFragment";
 import PostFragment from "./posts/PostFragment";
 import ProjectsFragment from "./projects/ProjectsFragment";
@@ -47,6 +47,10 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
         const url = window.location.hash;
         if (url.includes("weblog")) {
             this.setupSmoothScrollForFragmentChildren(2);
+        } else if (url.includes("builds")) {
+            this.setupSmoothScrollForFragmentChildren(3);
+        } else if (url.includes("contact")) {
+            this.setupSmoothScrollForFragmentChildren(4);
         } else {
             this.setupSmoothScrollForFragmentChildren(0);
         }
@@ -60,12 +64,12 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
 
         return (
             <div id={HomePage.HOME_PAGE_ID}>
-                <HomeNavBar
+                <NavBar
                     showNavigationBar={this.state.showNavigationBar}
                     navigationRoutes={
                         _.map(HomePage.HOME_PAGE_CHILDREN_FRAGMENT_LIST, (homePageFragmentMeta) => {
                             return {
-                                id : homePageFragmentMeta.id,
+                                inPageId : homePageFragmentMeta.id,
                                 displayName : homePageFragmentMeta.displayName,
                                 faIcon : homePageFragmentMeta.iconDefinition
                             }

@@ -3,6 +3,7 @@ import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import HomePage from "./home/HomePage";
 import TicTacToePage from "./tictactoe/TicTacToePage";
 import { Redirect } from "react-router-dom";
+import MontyHallPage from "./builds/montyhall/MontyHallPage";
 
 interface AppProps {}
 
@@ -26,6 +27,9 @@ export default class App extends React.Component<AppProps, AppState> {
                     </Route>
                     <Route path={App.buildRoutePath("builds/tictactoe")}>
                         <TicTacToePage />
+                    </Route>
+                    <Route path={App.buildRoutePath("builds/montyhall")}>
+                        <MontyHallPage />
                     </Route>
                     <Route path={App.buildRoutePath()}>
                         <Redirect to={App.buildRoutePath("home")} />

@@ -280,6 +280,10 @@ ol, ul {
   }
 }
 
+#ttt-game {
+  padding: 95px 15px 15px;
+}
+
 .ttt-game-setup-modal-header {
   @extend .ttt-modal-header;
   background: $accent-color;

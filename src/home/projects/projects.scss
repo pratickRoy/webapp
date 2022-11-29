@@ -128,6 +128,7 @@
                 &:nth-child(2) { animation: slideInFromRight 0.5s ease-out 3.5s forwards;}
                 &:nth-child(3) { animation: slideInFromRight 0.5s ease-out 4s forwards;}
                 &:nth-child(4) { animation:  slideInFromRight 0.5s ease-out 4.5s forwards;}
+                &:nth-child(5) { animation:  slideInFromRight 0.5s ease-out 5.0s forwards;}
             }
 
             &:hover, &:focus, &:focus-within {
@@ -151,16 +152,26 @@
                 word-break: keep-all;
                 flex-wrap: wrap;
 
-                img {
-                    width: 30%;
-                    @include xsh() { width: 50% }
-                    max-height: 100%;
+                .prw-home-page-projects-fragment-project-content-image {
+                    display: flex;
+                    height: 33%;
+                    width: 100%;
+                    justify-content: center;
+
+                    img {
+                        height: 100%;
+                        width: 100%;
+                        object-fit: contain
+                    }
                 }
 
-                div {
+                .prw-home-page-projects-fragment-project-content-title {
                     display: flex;
-                    width: calc(100% - 4rem);
-                    flex-direction: column;
+                    width: 100%;
+                    height: 33%;
+                    font-size: 32px;
+                    max-font-size: 3.5vw;
+                    justify-content: center;
                     align-items: center;
                 }
 
@@ -168,8 +179,10 @@
 
                     display: flex;
                     flex-direction: row;
+                    align-items: end;
                     width: 100%;
-                    margin-top: auto;
+                    height: 33%;
+                    margin-top: -5px;
 
                     .prw-home-page-projects-fragment-project-tag {
                         flex: 1;

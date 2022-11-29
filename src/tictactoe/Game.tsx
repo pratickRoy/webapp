@@ -6,7 +6,6 @@ import GameSession from "./GameSession";
 import GameSeriesSummaryModal from "./GameSeriesSummaryModal";
 import GameSetupModal from "./GameSetupModal";
 import TicTacToeToast, {ToastType} from "./commons/TicTacToeToast";
-import NavBar from "../NavBar";
 
 interface GameProps {
     startGame: boolean
