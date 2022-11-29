@@ -45,7 +45,7 @@
     "http-server": "^0.12.3",
     "jquery": "^3.5.1",
     "jquery.scrollto": "^2.1.2",
-    "node-sass": "^6.0.1",
+    "node-sass": "^8.0.0",
     "react": "^16.13.1",
     "react-animated-css": "^1.2.1",
     "react-awesome-button": "^6.5.1",
