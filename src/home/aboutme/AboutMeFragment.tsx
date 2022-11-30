@@ -39,6 +39,7 @@ import {white} from "material-ui/styles/colors";
 import {ToastOptions} from "react-toastify/dist/types";
 import {GAevent, GApageView} from "../../index";
 import ToastUtils from "../../utils/ToastUtils";
+import {IconDefinition} from "@fortawesome/fontawesome-common-types";
 
 
 interface AboutMeProps {
@@ -130,7 +131,22 @@ export default class AboutMe extends React.Component<AboutMeProps, AboutMeState>
                         AboutMe.ABOUT_ME_TOAST_ID.NAVIGATION
                     )
                 );
-                this.setState({isFragmentActivated : true})
+
+                this.setState(
+                    {isFragmentActivated : true},
+                    () => {
+                        setTimeout(() => {
+                            const url = window.location.hash;
+                            const category = unescape(url.substring(url.indexOf("category") + 9))
+                            switch (category) {
+                                case "human": this.showCard(0); break;
+                                case "developer": this.showCard(1); break;
+                                case "workex": this.showCard(2); break;
+                                default : break;
+                            }
+                        }, 2000)
+                    }
+                )
                 return
             }
 
@@ -283,121 +299,57 @@ export default class AboutMe extends React.Component<AboutMeProps, AboutMeState>
                                             <TimelineContent>
                                             </TimelineContent>
                                         </TimelineItem>
-                                        <TimelineItem>
-                                            <TimelineOppositeContent>
-                                                <Typography variant="body2" color="textSecondary">
-                                                    Apr '20 - Present
-                                                </Typography>
-                                            </TimelineOppositeContent>
-                                            <TimelineSeparator>
-                                                <TimelineDot color="primary">
-                                                    <FontAwesomeIcon icon={faAmazon} />
-                                                </TimelineDot>
-                                                <TimelineConnector />
-                                            </TimelineSeparator>
-                                            <TimelineContent>
-                                                <Typography>SDE - II</Typography>
-                                            </TimelineContent>
-                                        </TimelineItem>
-                                        <TimelineItem>
-                                            <TimelineOppositeContent>
-                                                <Typography variant="body2" color="textSecondary">
-                                                    June '18 - Mar '20
-                                                </Typography>
-                                            </TimelineOppositeContent>
-                                            <TimelineSeparator>
-                                                <TimelineDot color="secondary">
-                                                    <FontAwesomeIcon icon={faAmazon}/>
-                                                </TimelineDot>
-                                                <TimelineConnector />
-                                            </TimelineSeparator>
-                                            <TimelineContent>
-                                                <Typography>SDE - I</Typography>
-                                            </TimelineContent>
-                                        </TimelineItem>
-                                        <TimelineItem>
-                                            <TimelineSeparator>
-                                                <TimelineDot
-                                                    color="inherit"
-                                                    variant={"outlined"}
-                                                    style={{borderColor : "white"}}>
-                                                    <FontAwesomeIcon icon={faUniversity} color={"white"}/>
-                                                </TimelineDot>
-                                                <TimelineConnector />
-                                            </TimelineSeparator>
-                                            <TimelineContent>
-                                                <Typography>Graduated :)</Typography>
-                                            </TimelineContent>
-                                        </TimelineItem>
-                                        <TimelineItem>
-                                            <TimelineOppositeContent>
-                                                <Typography variant="body2" color="textSecondary">
-                                                    Sept '17 - May '18
-                                                </Typography>
-                                            </TimelineOppositeContent>
-                                            <TimelineSeparator>
-                                                <TimelineDot style={{background: "#1A1818"}}>
-                                                    <img
-                                                        style={{height: "20px"}}
-                                                        src={TrueSingularityLogo}/>
-                                                </TimelineDot>
-                                                <TimelineConnector />
-                                            </TimelineSeparator>
-                                            <TimelineContent>
-                                                <Typography>Project Manager and Tech Lead</Typography>
-                                            </TimelineContent>
-                                        </TimelineItem>
-                                        <TimelineItem>
-                                            <TimelineOppositeContent>
-                                                <Typography variant="body2" color="textSecondary">
-                                                    Jan '17 - Aug '17
-                                                </Typography>
-                                            </TimelineOppositeContent>
-                                            <TimelineSeparator>
-                                                <TimelineDot color="grey" style={{color: "black"}}>
-                                                    <FontAwesomeIcon icon={faAmazon} />
-                                                </TimelineDot>
-                                                <TimelineConnector />
-                                            </TimelineSeparator>
-                                            <TimelineContent>
-                                                <Typography>SDE - Intern</Typography>
-                                            </TimelineContent>
-                                        </TimelineItem>
-                                        <TimelineItem>
-                                            <TimelineOppositeContent>
-                                                <Typography variant="body2" color="textSecondary">
-                                                    July '16 - Jan '17
-                                                </Typography>
-                                            </TimelineOppositeContent>
-                                            <TimelineSeparator>
-                                                <TimelineDot style={{background: "#222E35"}}>
-                                                    <img
-                                                        style={{height: "20px"}}
-                                                        src={SizzleLabsLogo}/>
-                                                </TimelineDot>
-                                                <TimelineConnector />
-                                            </TimelineSeparator>
-                                            <TimelineContent>
-                                                <Typography>App Dev Engineer</Typography>
-                                            </TimelineContent>
-                                        </TimelineItem>
-                                        <TimelineItem>
-                                            <TimelineOppositeContent>
-                                                <Typography variant="body2" color="textSecondary">
-                                                    May '16 - June '16
-                                                </Typography>
-                                            </TimelineOppositeContent>
-                                            <TimelineSeparator>
-                                                <TimelineDot style={{background: "#222E35"}}>
-                                                    <img
-                                                        style={{height: "20px"}}
-                                                        src={SizzleLabsLogo}/>
-                                                </TimelineDot>
-                                            </TimelineSeparator>
-                                            <TimelineContent>
-                                                <Typography>Intern</Typography>
-                                            </TimelineContent>
-                                        </TimelineItem>
+                                        {this.renderTimeline(
+                                            "SDE - III",
+                                            {style : {background: "#ff9900", color: "black"}},
+                                            "Dec '22 - Present",
+                                            {definition : faAmazon},
+                                        )}
+                                        {this.renderTimeline(
+                                            "SDE - II",
+                                            {color : "primary"},
+                                            "Apr '20 - Nov '22",
+                                            {definition : faAmazon},
+                                        )}
+                                        {this.renderTimeline(
+                                            "SDE - I",
+                                            {color : "secondary"},
+                                            "June '18 - Mar '20",
+                                            {definition : faAmazon},
+                                        )}
+                                        {this.renderTimeline(
+                                            "Graduated :)",
+                                            {color : "inherit", variant : "outlined", style : {borderColor : "white"}},
+                                            undefined,
+                                            {definition : faUniversity, color : "white"},
+                                        )}
+                                        {this.renderTimeline(
+                                            "Project Manager and Tech Lead",
+                                            {style : {background: "#1A1818"}},
+                                            "Sept '17 - May '18",
+                                            undefined,
+                                            {src: TrueSingularityLogo, style : {height: "20px"}}
+                                        )}
+                                        {this.renderTimeline(
+                                            "SDE - Intern",
+                                            {color : "grey", style : {color: "black"}},
+                                            "Jan '17 - Aug '17",
+                                            {definition : faAmazon},
+                                        )}
+                                        {this.renderTimeline(
+                                            "App Dev Engineer",
+                                            {style : {background: "#222E35"}},
+                                            "July '16 - Jan '17",
+                                            undefined,
+                                            {src: SizzleLabsLogo, style : {height: "20px"}}
+                                        )}
+                                        {this.renderTimeline(
+                                            "Intern",
+                                            {style : {background: "#222E35"}},
+                                            "May '16 - June '16",
+                                            undefined,
+                                            {src: SizzleLabsLogo, style : {height: "20px"}}
+                                        )}
                                     </Timeline>
                                 </CardContent>
                             </React.Fragment>
@@ -442,6 +394,48 @@ export default class AboutMe extends React.Component<AboutMeProps, AboutMeState>
                     </AwesomeButton>
                 </div>
             </div>
+        )
+    }
+
+    private renderTimeline(designation : string,
+                           timelineDotStyle : {
+                               color? : 'inherit' | 'primary' | 'secondary' | 'grey',
+                               variant? : 'default' | 'outlined',
+                               style?: React.CSSProperties
+                           },
+                           dates? : string,
+                           icon? : {
+                               definition : IconDefinition,
+                               color? : string
+                           },
+                           img? : {
+                               src: string
+                               style?: React.CSSProperties
+                           }) : JSX.Element {
+
+        return (
+            <TimelineItem>
+                {dates &&
+                    <TimelineOppositeContent>
+                        <Typography variant="body2" color="textSecondary">
+                            {dates}
+                        </Typography>
+                    </TimelineOppositeContent>
+                }
+                <TimelineSeparator>
+                    <TimelineDot
+                        variant={timelineDotStyle.variant}
+                        color={timelineDotStyle.color}
+                        style={timelineDotStyle.style}>
+                        {icon && <FontAwesomeIcon icon={icon.definition} color={icon.color} />}
+                        {img && <img style={img.style} src={img.src}/>}
+                    </TimelineDot>
+                    <TimelineConnector />
+                </TimelineSeparator>
+                <TimelineContent>
+                    <Typography>{designation}</Typography>
+                </TimelineContent>
+            </TimelineItem>
         )
     }
 

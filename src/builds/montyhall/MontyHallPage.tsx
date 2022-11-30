@@ -43,14 +43,6 @@ export default class MontyHallPage extends React.Component<MontyHallPageProps, M
         GApageView("builds/montyhall");
     }
 
-    private static HOME_PAGE_CHILDREN_FRAGMENT_LIST = [
-        new HomePageFragmentMeta("prw-home-page-landing-fragment", "Eagle", faRocket),
-        new HomePageFragmentMeta("prw-home-page-about-me-fragment", "Me", faInfo),
-        new HomePageFragmentMeta("prw-home-page-posts-fragment", "Weblog", faFeatherAlt),
-        new HomePageFragmentMeta("prw-home-page-projects-fragment", "Builds", faCode),
-        new HomePageFragmentMeta("prw-home-page-contact-fragment", "Say Hi", faPaperPlane),
-    ]
-
     render() {
 
         return (
@@ -68,8 +60,8 @@ export default class MontyHallPage extends React.Component<MontyHallPageProps, M
                             faIcon: faCode
                         },
                         {
-                            externalPageLink: "https://drive.google.com/file/d/11mQdCVA1H39n5su4rjRmBcrF9DnOOAzy/view?usp=sharing",
-                            displayName: "Resume",
+                            externalPageLink: "#/home/aboutme?category=workex",
+                            displayName: "Work Ex.",
                             faIcon: faBook
                         },
                         {

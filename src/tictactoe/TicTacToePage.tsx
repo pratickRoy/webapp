@@ -42,8 +42,8 @@ export default class TicTacToePage extends React.Component<TicTacToePageProps, T
                             faIcon: faCode
                         },
                         {
-                            externalPageLink: "https://drive.google.com/file/d/11mQdCVA1H39n5su4rjRmBcrF9DnOOAzy/view?usp=sharing",
-                            displayName: "Resume",
+                            externalPageLink: "#/home/aboutme?category=workex",
+                            displayName: "Work Ex.",
                             faIcon: faBook
                         },
                         {

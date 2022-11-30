@@ -64,7 +64,6 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
     componentDidUpdate(prevProps: Readonly<PostFragmentProps>, prevState: Readonly<PostFragmentState>, snapshot?: any) {
 
         if (!prevProps.isFragmentActive && this.props.isFragmentActive) {
-            //window.history.replaceState("object or string", "", "/home/post");
             GApageView("home/post");
         }
         if (prevProps.isFragmentActive && !this.props.isFragmentActive) {
@@ -163,7 +162,15 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
                     <p style={{textAlign: "center"}}>Page Construction In Progress. Give me 2 Secs.</p>
                 </div>
                 <div id={"prw-home-page-posts-fragment-posts"} className={activatedDeactivatedClass}>
-
+                    {this.buildCardListItem(
+                        "https://pratickroy.medium.com/15f7fa0c80e7?source=friends_link&sk=56ca58cc04e5c848d31f2ae44408f7ea",
+                        "https://cdn-images-1.medium.com/max/1000/0*k_i5Fq1DjFCWcQJ1",
+                        "3 Doors",
+                        "bd20c922-01d9-44e5-bec1-32614f5bbe63",
+                        "Solving the Monty-Hall problem",
+                        "A simple simulation webapp to test the optimal Monty Hall strategy",
+                        "A webapp to solve the Monty Hall problem by simply playing the game and evaluating the results. But don't just take my word for it. Try it out yourself!"
+                    )}
                     {this.buildCardListItem(
                         "https://www.aboutamazon.in/news/workplace/what-makes-our-definition-of-mvvmi-the-best-architectural-design-choice-for-android",
                         "https://assets.aboutamazon.com/dims4/default/ed1730d/2147483647/strip/true/crop/1279x720+0+0/resize/1320x743!/format/webp/quality/90/?url=https%3A%2F%2Famazon-blogs-brightspot.s3.amazonaws.com%2F50%2F82%2F05423c5e4fa7a6e57e93cd958c92%2Fandroid-1280x720.jpg",

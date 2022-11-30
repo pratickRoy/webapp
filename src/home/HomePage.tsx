@@ -45,7 +45,9 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
         GApageView("home");
 
         const url = window.location.hash;
-        if (url.includes("weblog")) {
+        if (url.includes("aboutme")) {
+            this.setupSmoothScrollForFragmentChildren(1);
+        } else if (url.includes("weblog")) {
             this.setupSmoothScrollForFragmentChildren(2);
         } else if (url.includes("builds")) {
             this.setupSmoothScrollForFragmentChildren(3);
@@ -185,7 +187,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                     homePageInstance.setState({
                         activeHomePageFragmentId : majorityId
                     })
-                    if (!HomePage.isFragmentOverflowing(majorityId)) {
+                    if (HomePage.isFragmentOverflowing(majorityId)) {
                         isSmoothScrolling = true
                         SmoothScrollUtils.scrollToId(majorityId, () => {isSmoothScrolling = false});
                     }

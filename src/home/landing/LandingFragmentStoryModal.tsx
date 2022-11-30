@@ -83,8 +83,6 @@ export default class LandingFragmentStoryModal extends React.Component<LandingFr
                         <AwesomeButton
                             disabled={!this.state.storyPlaying}
                             onPress={() => {
-                                console.log(this.storyPlayer)
-                                console.log("Sup")
                                 this.storyPlayer!.seekTo(0, "seconds")
                             }}
                             size="small">
