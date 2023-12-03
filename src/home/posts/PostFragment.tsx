@@ -163,6 +163,15 @@ export default class PostFragment extends React.Component<PostFragmentProps, Pos
                 </div>
                 <div id={"prw-home-page-posts-fragment-posts"} className={activatedDeactivatedClass}>
                     {this.buildCardListItem(
+                        "https://medium.com/codex/a-webapps-tale-the-tech-road-map-cbc23d2a2687?sk=d3391b3b028ec717f6ef39c139e448e2",
+                        "https://miro.medium.com/v2/resize:fit:2000/format:webp/1*hYD8pH5QuQN3Mdl3pX5zCA.png",
+                        "Blog Header Image",
+                        "5e81d56a-c974-42de-8007-46a824fe3f38",
+                        "A Webapp’s Tale: The Tech Road Map",
+                        "From static react web-app to engineering excellence",
+                        "My Roadmap to build & productionize web apps in real-world: MERN, Docker, Kubernetes, Helm, GitHub Actions, Terraform. End-to-end guide from basic to scalable tech stack."
+                    )}
+                    {this.buildCardListItem(
                         "https://pratickroy.medium.com/15f7fa0c80e7?source=friends_link&sk=56ca58cc04e5c848d31f2ae44408f7ea",
                         "https://cdn-images-1.medium.com/max/1000/0*k_i5Fq1DjFCWcQJ1",
                         "3 Doors",
